@@ -1,4 +1,7 @@
-
+__all__ = ["clear_folder", "get_new_file_path",
+             "add_order", 
+             "get_tables"
+             "start_time", "end_time"]
 import re
 import os
 import numpy as np
@@ -72,7 +75,35 @@ def add_order(data):
 
 
 def get_tables(cursor):
+    """获取所有表名
+    
+    通过获取cursor 对象，获取数据库所有的表名
+    
+    Arguments:
+        cursor {conn.curson} -- pymsyql.connnect().cursor()
+    
+    Returns:
+        int,set -- 表数,表名集合
+    """
     sql = "show tables"
     tables_count = cursor.execute(sql)
     tables = {table_name[0] for table_name in cursor.fetchall()}
     return tables_count,tables
+
+class DeltaT():
+    start_time_dic = {}
+    def start_time(self,flag):
+        DeltaT.start_time_dic[flag] = time.time()
+
+    def end_time(self,flag):
+        
+        s_time = DeltaT.start_time_dic.get(flag, None)
+
+        if s_time:
+            return time.time() - s_time
+
+        return None
+
+dt = DeltaT()
+start_time = dt.start_time
+end_time = dt.end_time
