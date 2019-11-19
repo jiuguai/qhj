@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-
+# In[1]:
 
 
 import os
@@ -20,7 +20,7 @@ import warnings
 warnings.filterwarnings('ignore')
 from tools import *
 
-
+start_time('handle_order')
 
 
 # 初始化数据库连接，使用pymysql模块
@@ -45,7 +45,7 @@ lt_time = None
 fm_lt_time = None
 
 
-
+# In[2]:
 
 
 """
@@ -54,14 +54,15 @@ fm_lt_time = None
 """
 
 
+# In[3]:
 
 
 
 
 # 读取 供应商信息
 print('读取供应商信息')
-supplier_df = pd.read_excel(SUPPLIER_BASE_PATH)
-supplier_df = supplier_df[['供应商ID','供应商',"对接平台"]]
+commodity_df = pd.read_excel(COMMODITY_PATH)
+commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
 
 # 读取导出信息
 
@@ -69,7 +70,7 @@ order_path, lt_time = get_new_file_path(EXPORT_DIR,ORDER_DATE_PATT)
 fm_lt_time = lt_time.strftime(DATE_FORMAT)
 print('读取%s' %order_path)
 data = pd.read_excel(order_path)
-data['供应商ID'] = data['商品ID'].str[:5]
+
 data['导出订单时间'] = lt_time
 
 print('>>>>系统字段统一为本地字段')
@@ -78,10 +79,11 @@ data.rename(columns=FIELDS_SLM_DIC,inplace=True)
 
 # 获取供应商
 print('>>>>连接供应商信息')
-data = pd.merge(data,supplier_df,how='left',on='供应商ID')
+data = pd.merge(data,commodity_df,how='left',on='商品ID')
 
 
 
+# In[4]:
 
 
 """
@@ -89,7 +91,7 @@ data = pd.merge(data,supplier_df,how='left',on='供应商ID')
 """
 
 
-
+# In[5]:
 
 
 # 处理系统导出的数据表
@@ -104,13 +106,16 @@ if "运单号" in data.columns:
 else:
     new_order_df = data.copy()
 
-    
+
+# In[6]:
 
 
 """
 存储 及备 份
 """
 
+
+# In[7]:
 
 
 # 存储新订单信息
@@ -134,12 +139,12 @@ if up_order_df is not None and len(up_order_df):
     up_order_df.to_sql("up_order",engine,if_exists='replace',index=False)
 
 print('更新供应商数据到数据库')
-supplier_df.to_sql("supplier",engine,if_exists='replace',index=False)
+commodity_df.to_sql("products",engine,if_exists='replace',index=False)
 
 print()
 
 
-
+# In[8]:
 
 
 # 调用存储过程
@@ -162,7 +167,7 @@ print('>>>>完成提交')
 print()
 
 
-
+# In[9]:
 
 
 # 生成外发的订单
@@ -177,7 +182,7 @@ old_order_df = pd.read_sql(sql, engine)
 
 
 print('两表初步处理')
-fields =  ["订单号",'运单号',"商品ID",'供应商','商品名','数量','规格','单位','收件人姓名','收件人地址','收件人电话','备注','对接平台']
+fields =  ["订单号",'运单号',"商品ID",'供应商','商品名','数量','规格','单位','收件人姓名','收件人地址','收件人电话','备注','发货商']
 
 new_order_df['运单号'] = ""
 old_order_df['运单号'] = ""
@@ -192,11 +197,12 @@ old_order_df_r = old_order_df[fields]
 print()
 
 
+# In[10]:
 
 
 print('存储新订单 %s' %NEW_ORDER_SAVE_DIR)
-odo = OrderMiddleware(new_order_df_r,"对接平台")
-for d_plat in new_order_df_r['对接平台'].unique():
+odo = OutOrderMiddleware(new_order_df_r,"发货商")
+for d_plat in new_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
     file_name = "%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
     file_path = os.path.join(NEW_ORDER_SAVE_DIR,file_name)
@@ -206,8 +212,8 @@ for d_plat in new_order_df_r['对接平台'].unique():
 print("新订单存储完成\n")
 
 print('存储已发未回订单 %s' %OVERTIME_ORDER_SAVE_DIR)
-odo = OrderMiddleware(old_order_df_r,"对接平台")
-for d_plat in old_order_df_r['对接平台'].unique():
+odo = OutOrderMiddleware(old_order_df_r,"发货商")
+for d_plat in old_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
     file_name = "%s_已发未回订单 %s.xlsx" %(d_plat,fm_lt_time)
     file_path = os.path.join(OVERTIME_ORDER_SAVE_DIR,file_name)
@@ -218,31 +224,15 @@ for d_plat in old_order_df_r['对接平台'].unique():
 print("已发未回订单存储完成\n")
 
 
+# In[11]:
 
 
+macro_path = BEAUTY_VBA_PATH
+macro_name = "美化.xlsm!beautify"
+macro_params = r"D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\"
 
-print("格式化订单表")
 
+MacroMiddleware(macro_path, macro_name, macro_params, visible=EXCEL_VISIBLE)()
 
-xlapp = client.Dispatch('Excel.Application')
-xlapp.visible = EXCEL_VISIBLE
-try:
-    print('>>>>打开宏表')
-    book1 = xlapp.Workbooks.Open(BEAUTY_VBA_PATH)
-    print('>>>>开始运行')
-    xlapp.Application.Run("美化.xlsm!beautify")
-    print('>>>>执行完毕')
-except:
-    pass
-finally:
-    print('>>>>关闭宏表')
-    xlapp.DisplayAlerts = 0
-    book1.Close()
-    xlapp.DisplayAlerts = 1
-    xlapp.Application.Quit()
-    print('>>>>关闭完成\n')
-
-    
-print('关闭数据库连接')
-conn.close()
+print("%0.3fs\n" %end_time('handle_order'))
 

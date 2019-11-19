@@ -22,8 +22,7 @@ BACK_DIR = r'D:\奇货居\备份'
 NEW_ORDER_BAK_DIR = os.path.join(BACK_DIR,r"系统导出\新增订单")
 UPDATE_ORDER_BAK_DIR = os.path.join(BACK_DIR,r"系统导出\更新订单")
 
-# 素材目录
-MATERIAL_DIR = r"D:\奇货居\素材\商城图片素材" 
+
 
 # 备份供应商 运单目录
 TRACKING_BACK_DIR = os.path.join(BACK_DIR,r'运单\源')
@@ -41,13 +40,13 @@ DATE_FORMAT = "%Y-%m-%d %H_%M_%S"
 
 
 
-# 供应商路径
-SUPPLIER_BASE_PATH = r"D:\奇货居\素材\商城图片素材\供应商详情.xlsx"
+# 发货商路径
+
+COMMODITY_BASE_DIR = r"D:\奇货居\素材\商城图片素材"
+COMMODITY_PATH =os.path.join(COMMODITY_BASE_DIR, "商品信息.xlsx")
 
 
-# 对接平台路径
 
-DOCKING_PLATFORM_PATH = SUPPLIER_BASE_PATH
 
 
 # 输出目录
