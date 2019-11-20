@@ -20,7 +20,7 @@ class OutOrderMiddleware():
 
     def _ss_out(self):
         out_fields = ['商品名','数量','收件人姓名','收件人地址','收件人电话','备注']
-
+        self.temp.fillna(value={'备注':"", "规格":""}, inplace=True)
         self.temp.loc[:,'备注'] = "规格:" + self.temp['规格'] + "; " + self.temp['备注']
         self.temp.loc[:,'收件人地址'] = self.temp['收件人地址'] + "[W:" + self.temp['订单号'] + "]"
         return self.temp[out_fields]
