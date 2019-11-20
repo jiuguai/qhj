@@ -1,4 +1,4 @@
-from win32com import client 
+
 
 # 输出定单
 class OutOrderMiddleware():
@@ -28,45 +28,3 @@ class OutOrderMiddleware():
     def _default_out(self):
         return self.temp
 
-# 调用宏文件
-class MacroMiddleware():
-    def __init__(self, macro_path, macro_name, *macro_params, visible=False):
-        self.path = macro_path
-        self.name = macro_name
-        self.params = macro_params
-
-        self.visible = visible
-
-        # self.xlapp = client.Dispatch('Excel.Application')
-        # 额外开启进程
-        self.xlapp = client.DispatchEx('Excel.Application')
-
-    def run(self):
-        try:
-            self.xlapp.visible = self.visible
-            print('>>>>打开宏表')
-            self.book = self.xlapp.Workbooks.Open(self.path)
-            print('>>>>开始运行')
-            self.xlapp.Application.Run(self.name, *self.params)
-            print('>>>>关闭宏表')
-            self.xlapp.DisplayAlerts = 0
-            self.book.Close()
-            
-            self.xlapp.Application.Quit()
-            print('>>>>关闭完成\n')
-        except e:
-            print(e)
-            pass
-
-        finally:
-            self.xlapp.Application.Quit()
-        
-    def __call__(self):
-        self.run()
-
-    def __del__(self):
-        self.xlapp.DisplayAlerts = 0
-        try:
-            self.book.Close()
-        except:
-            self.xlapp.Application.Quit()

@@ -16,7 +16,7 @@ import pymysql
 from sqlalchemy import create_engine
 
 from tools import *
-from win32com import client 
+
 
 
 
@@ -93,12 +93,6 @@ for index, shipper_row in shipper_df.iterrows():
  
 
 
-# In[ ]:
-
-
-
-
-
 # In[5]:
 
 
@@ -113,12 +107,20 @@ sp_data.to_excel(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"),index=Fals
 # In[6]:
 
 
+
+
+
 macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
 macro_params = r"D:\奇货居\素材\商城图片素材\\"
 
 
-MacroMiddleware(macro_path, macro_name, macro_params, visible=EXCEL_VISIBLE)()
+mo = Macro(visible=EXCEL_VISIBLE)
+mo.open(macro_path)
+mo(name=macro_name,params = (macro_params,))
+mo.close()
+
+
 print("%0.3fs\n" %end_time("商品详情"))
 
 

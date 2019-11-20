@@ -8,7 +8,6 @@ import os
 import sys
 sys.path.append(r"D:\往期\奇货居\ZERO")
 
-from win32com import client 
 import numpy as np
 import pandas as pd
 import pymysql
@@ -62,6 +61,10 @@ fm_lt_time = None
 # 读取 供应商信息
 print('读取供应商信息')
 commodity_df = pd.read_excel(COMMODITY_PATH)
+
+print('更新供应商数据到数据库')
+commodity_df.to_sql("products",engine,if_exists='replace',index=False)
+
 commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
 
 # 读取导出信息
@@ -138,8 +141,7 @@ if up_order_df is not None and len(up_order_df):
     print('>>>>存入临时数据库 up_order')
     up_order_df.to_sql("up_order",engine,if_exists='replace',index=False)
 
-print('更新供应商数据到数据库')
-commodity_df.to_sql("products",engine,if_exists='replace',index=False)
+
 
 print()
 
@@ -232,7 +234,10 @@ macro_name = "美化.xlsm!beautify"
 macro_params = r"D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\"
 
 
-MacroMiddleware(macro_path, macro_name, macro_params, visible=EXCEL_VISIBLE)()
+mo = Macro(visible=EXCEL_VISIBLE)
+mo.open(macro_path)
+mo(name=macro_name,params = (macro_params,))
+mo.close()
 
 print("%0.3fs\n" %end_time('handle_order'))
 

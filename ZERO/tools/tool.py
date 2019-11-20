@@ -1,12 +1,16 @@
 __all__ = ["clear_folder", "get_new_file_path",
              "add_order", 
              "get_tables",
-             "start_time", "end_time"]
+             "start_time", "end_time",
+             "Macro"
+             ]
 import re
 import os
 import time
+
 import numpy as np
 import pandas as pd
+from win32com import client 
 
 def clear_folder(target_dir,is_recursion=True):
     for file in os.listdir(target_dir):
@@ -63,9 +67,11 @@ def get_new_file_path(file_dir,file_date_patt,date_format="%Y-%m-%d %H_%M_%S",re
 
 
 def add_order(data):
-    fields = data.columns.tolist()
-    if "序号" in fields:
+
+    if "序号" in data.columns:
         del data['序号']
+
+    fields = data.columns.tolist()
     data = data.reset_index(drop=True)
     data.index.name = "序号"
     data = data.reset_index()
@@ -108,3 +114,82 @@ class DeltaT():
 dt = DeltaT()
 start_time = dt.start_time
 end_time = dt.end_time
+
+
+
+
+# 调用宏文件
+class Macro():
+    def __init__(self, *macro_params, visible=False, **kargs):
+        """
+        Arguments:
+            *macro_params {[list|tuple]} -- 运行宏的参数
+            **kargs {String} -- macro_path : 宏文件路径
+                             -- macro_name : 宏名
+                             -- oap        : 是否另启进程
+        
+        Keyword Arguments:
+            visible {bool} -- 是否现实Excel文件 (default: {False})
+        """
+
+        self.path = kargs.get("macro_path",None)
+        self.name = kargs.get("macro_name",None)
+
+        # 当有excel 运行时候 是否开启 新进程
+        self.open_anothor_process = kargs.get("oap",True)
+
+        self.params = macro_params
+
+        self.visible = visible
+
+        # 另外开启进程
+        if self.open_anothor_process:
+            self.xlapp = client.DispatchEx('Excel.Application')
+        else:
+            self.xlapp = client.Dispatch('Excel.Application')
+        self.xlapp.visible = self.visible
+
+
+    def open(self, path=None):
+
+        self.path = path if path else self.path
+        print('>>>>打开宏表')
+        self.xlapp.DisplayAlerts = 0
+        if path is not None \
+            or (path is None \
+                and not hasattr(self, 'book') \
+                and self.path is not None):
+            
+            self.book = self.xlapp.Workbooks.Open(self.path)
+
+
+    def run(self, name=None, params=None, visible=None):
+        self.name = name if name else self.name
+        if isinstance(params,(list, tuple)):
+            self.params = params
+        self.visible = self.visible if visible is None else visible
+
+        try:
+            self.xlapp.visible = self.visible
+            print('>>>>开始运行')
+            self.xlapp.Application.Run(self.name, *self.params)
+        except Exception as e:
+            print(e)
+
+
+    def close(self):
+        print('>>>>关闭宏表')
+        self.xlapp.DisplayAlerts = 0
+        self.book.Close()
+        self.xlapp.Application.Quit()
+        print('>>>>关闭完成\n') 
+
+
+    def __call__(self,**kargs):
+        self.run(**kargs)
+
+    def __del__(self):
+        try:
+            self.xlapp.Application.Quit()
+        except:
+            pass

@@ -1,6 +1,5 @@
 import os
 
-DEBUG = False
 
 # 订单到运单 之间 超时设定
 OVERTIME_ORDER_TO_WAYBILL_HOUR = 36
@@ -94,5 +93,3 @@ FIELDS_SLM_DIC = {
 FIELDS_LSM_DIC = {v:k for k, v in FIELDS_SLM_DIC.items()}
 
 
-if DEBUG:
-	EXCEL_VISIBLE = 1
