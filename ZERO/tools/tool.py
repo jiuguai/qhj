@@ -1,6 +1,7 @@
 __all__ = ["clear_folder", "get_new_file_path",
              "add_order", 
              "get_tables",
+             "completion_col","get_duplicated_field",
              "start_time", "end_time",
              "Macro"
              ]
@@ -81,6 +82,52 @@ def add_order(data):
     return data[fields]
 
 
+# 补齐需要的缺省列
+def completion_col(data, fields, format_dict={}):
+    """补齐dataframe缺省列
+    
+    补齐列
+    
+    Arguments:
+        data {dataframe} -- 需要补齐的dataframe
+        fields {set()} -- 需要补齐的自断
+    
+    Keyword Arguments:
+        format_dict {dict} -- fields中默认值 如果为空默认补齐为None (default: {{}})
+    
+    Returns:
+        [dataframe] -- [返回已补齐的dataframe]
+    """
+    data_fields = set(data)
+    for field in (fields - data_fields):
+        default_value = format_dict.get(field, None)
+        data[field] = default_value
+    return data
+
+def get_duplicated_field(df_columns):
+    """get_duplacetes
+    
+    将集合中重复的返回重复想
+    
+    Arguments:
+        columns {[list,tuple]} -- 集合类型数据
+    
+    Returns:
+        set -- 重复数据
+    """
+    
+    assert isinstance(df_columns,(list,tuple)),"预期 (list,tuple) 实际传入 %s" %(type(df_columns))
+    duplicated_fileds = set({})
+    columns = set({})
+    for filed_name in df_columns:
+        if filed_name not in columns:
+            columns.add(filed_name)
+        else:
+            duplicated_fileds.add(filed_name)
+    return duplicated_fileds
+
+
+# 获取数据库表名
 def get_tables(cursor):
     """获取所有表名
     

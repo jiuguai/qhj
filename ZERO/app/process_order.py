@@ -71,8 +71,10 @@ commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","�
 
 order_path, lt_time = get_new_file_path(EXPORT_DIR,ORDER_DATE_PATT)
 fm_lt_time = lt_time.strftime(DATE_FORMAT)
-print('读取%s' %order_path)
+
+print('读取 %s' %order_path)
 data = pd.read_excel(order_path)
+data = OrderInMiddleware(data)()
 
 data['导出订单时间'] = lt_time
 
@@ -203,7 +205,7 @@ print()
 
 
 print('存储新订单 %s' %NEW_ORDER_SAVE_DIR)
-odo = OutOrderMiddleware(new_order_df_r,"发货商")
+odo = OrderOutMiddleware(new_order_df_r,"发货商")
 for d_plat in new_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
     file_name = "%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
@@ -214,7 +216,7 @@ for d_plat in new_order_df_r['发货商'].unique():
 print("新订单存储完成\n")
 
 print('存储已发未回订单 %s' %OVERTIME_ORDER_SAVE_DIR)
-odo = OutOrderMiddleware(old_order_df_r,"发货商")
+odo = OrderOutMiddleware(old_order_df_r,"发货商")
 for d_plat in old_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
     file_name = "%s_已发未回订单 %s.xlsx" %(d_plat,fm_lt_time)
