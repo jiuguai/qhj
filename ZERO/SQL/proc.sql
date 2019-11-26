@@ -116,3 +116,18 @@ WHERE
   );
 
   END
+
+
+drop procedure if exists proc_update_address;
+
+CREATE PROCEDURE proc_update_address ()
+BEGIN
+  UPDATE order_details t1
+JOIN update_address t2 ON t1.订单号 = t2.订单号
+SET t1.国家 = t2.国家,
+ t1.城市 = t2.城市,
+ t1.县区 = t2.县区,
+ t1.街道 = t2.街道,
+ t1.lng = t2.lng,
+ t1.lat = t2.lat;
+END;
