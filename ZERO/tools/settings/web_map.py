@@ -12,7 +12,7 @@ GEO_URL = {
 }
 
 
-RGEO_URL = {
+REGEO_URL = {
     "baidu":"http://api.map.baidu.com/reverse_geocoding/v3/?ak={key}&output=json&coordtype=gcj02ll&location={lat},{lng}",
     
     "gaode":"https://restapi.amap.com/v3/geocode/regeo?location={lng},{lat}&radius=1000&extensions=all&key={key}",

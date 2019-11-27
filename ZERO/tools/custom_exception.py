@@ -21,3 +21,20 @@ class DFFieldsLose(Exception):
 
     def __str__(self):
         return '%s 字段必须存在' %(self.msg)
+
+class ServiceError(Exception):
+    """访问异常
+    
+    访问服务器异常
+    
+    Extends:
+        Exception
+    """
+
+    def __init__(self, msg, obj):
+        self.msg = msg
+        self.obj = obj
+
+    def __str__(self):
+        return self.msg
+    

@@ -1,5 +1,5 @@
 from .config import *
-from .map_api import *
+from .web_map import *
 
 DEBUG = False
 

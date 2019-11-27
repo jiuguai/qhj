@@ -88,8 +88,8 @@ for index, shipper_row in shipper_df.iterrows():
 #             gg_df['相对目录'] = r'=HYPERLINK("%s\%s\%s\%s","GO")' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir)
             data_l.append(gg_df)
 
-    sp_data = pd.concat(data_l)
-    sp_data.reset_index(drop=True,inplace=True)
+sp_data = pd.concat(data_l)
+sp_data.reset_index(drop=True,inplace=True)
  
 
 
@@ -97,11 +97,14 @@ for index, shipper_row in shipper_df.iterrows():
 
 
 # 存储
-sp_data = add_order(sp_data)
+writer = pd.ExcelWriter(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"))
+
 fields = ['序号','商品ID','类别','商品名简称','商品名','单位', '规格', '规格模式', '市场价', '售价', '规格编码', '交易编码', '发货商','发货商ID','供应商', '供应商ID',
         '商品编码',  ]
-sp_data = sp_data[fields]
-sp_data.to_excel(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"),index=False,sheet_name="商品详情")
+
+add_order(sp_data[sp_data['状态'] != "下架"])[fields].to_excel(writer,index=False,sheet_name="商品详情")
+add_order(sp_data[sp_data['状态'] == "下架"])[fields].to_excel(writer,index=False,sheet_name="下架商品")
+writer.save()
 
 
 # In[6]:

@@ -2,7 +2,7 @@ import sys
 sys.path.append(r"D:\往期\奇货居\ZERO")
 
 from tools import *
-
+import request
 
 x = get_duplicated_field([1,2,1,3,4,2])
 print(x)

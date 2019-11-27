@@ -1,6 +1,6 @@
 from .custom_exception import *
 from .tool import get_duplicated_field
-
+import requests
 # 输出定单
 class OrderOutMiddleware():
     def __init__(self, data, filter_field):

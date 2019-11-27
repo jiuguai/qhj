@@ -117,8 +117,9 @@ WHERE
 
   END
 
-
-drop procedure if exists proc_update_address;
+# 更新地址
+DROP PROCEDURE
+IF EXISTS proc_update_address;
 
 CREATE PROCEDURE proc_update_address ()
 BEGIN
@@ -130,4 +131,6 @@ SET t1.国家 = t2.国家,
  t1.街道 = t2.街道,
  t1.lng = t2.lng,
  t1.lat = t2.lat;
+
+
 END;
