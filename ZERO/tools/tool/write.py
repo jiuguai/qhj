@@ -3,13 +3,13 @@ from datetime import datetime
 
 class SaveXl():
     
-    def __init__(self, save_dir=None, writer=None,**kargs):
+    def __init__(self, save_dir=None, writer=None, rel_dir="", **kargs):
 
 
         self.suf = kargs.get('suf'," %s" %(datetime.today().strftime("%Y_%m_%d %H_%M_%S")))
         self.save_dir = save_dir
         self.writer = writer
-
+        self.rel_dir = rel_dir
 
     def __call__(self, *args, **kargs):
         self.save(*args, **kargs)
@@ -33,7 +33,7 @@ class SaveXl():
 
         file_name = '{pre}{book_name}{suf}.xlsx'.format(book_name=self.book_name,pre=self.pre,suf=self.suf)
 
-        save_path = os.path.join(self.save_dir,file_name)
+        save_path = os.path.join(self.save_dir,self.rel_dir,file_name)
         data.to_excel(save_path, **kargs) 
 
         print('已存入 %s' %save_path)

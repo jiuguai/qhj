@@ -118,11 +118,11 @@ temp['可抽取佣金'] = temp['三级用户等级'].apply(lambda  x:commission_
 # In[存储三级数据]:
 
 save.suf = ""
-save_dir = r"C:\Users\zero\Desktop\T\需要发送的三级名单"
+save.rel_dir = "T"
 for (grandfather,grandfather_id),t in temp.groupby(['grandfather','grandfather_id']):
     t=  t[['二级用户名','三级用户名','三级用户等级','可抽取佣金']].sort_values('二级用户名')
 
-    save(t, r'T\%s_%s' %(grandfather_id,grandfather))
+    save(t, '%s_%s' %(grandfather_id,grandfather))
 
     
 
