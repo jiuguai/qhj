@@ -6,7 +6,7 @@
 
 import os
 import sys
-sys.path.append(r"D:\往期\奇货居\ZERO")
+sys.path.append(r"D:\往期\QHJ\ZERO")
 
 import numpy as np
 import pandas as pd
@@ -62,8 +62,6 @@ fm_lt_time = None
 print('读取供应商信息')
 commodity_df = pd.read_excel(COMMODITY_PATH)
 
-print('更新供应商数据到数据库')
-commodity_df.to_sql("products",engine,if_exists='replace',index=False)
 
 commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
 

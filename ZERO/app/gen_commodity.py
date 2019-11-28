@@ -6,20 +6,30 @@
 
 import os
 import sys
-sys.path.append(r"D:\往期\奇货居\ZERO")
+sys.path.append(r"D:\往期\QHJ\ZERO")
 
 import warnings
 warnings.filterwarnings('ignore')
 import numpy as np
 import pandas as pd
-import pymysql
+
 from sqlalchemy import create_engine
 
 from tools import *
 
 
+# In[创建连接数据库引擎]
+conn_dic = {
+    "user":"root",
+    "password":"jiuguai",
+    "host":"localhost",
+    "port":3306,
+    "database":"qhj",
+    "charset" :"utf8mb4"
+}
+conn_s = 'mysql+pymysql://{user}:{password}@{host}:{port}/{database}'.format(**conn_dic)
 
-
+engine = create_engine(conn_s, encoding='utf-8')
 # In[2]:
 
 
@@ -102,7 +112,15 @@ writer = pd.ExcelWriter(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"))
 fields = ['序号','商品ID','类别','商品名简称','商品名','单位', '规格', '规格模式', '市场价', '售价', '规格编码', '交易编码', '发货商','发货商ID','供应商', '供应商ID',
         '商品编码',  ]
 
-add_order(sp_data[sp_data['状态'] != "下架"])[fields].to_excel(writer,index=False,sheet_name="商品详情")
+
+
+
+commodity_df = add_order(sp_data[sp_data['状态'] != "下架"])[fields]
+print('更新供应商数据到数据库')
+commodity_df.to_sql("products",engine,if_exists='replace',index=False)
+
+commodity_df.to_excel(writer,index=False,sheet_name="商品详情")
+
 add_order(sp_data[sp_data['状态'] == "下架"])[fields].to_excel(writer,index=False,sheet_name="下架商品")
 writer.save()
 
@@ -127,7 +145,7 @@ mo.close()
 print("%0.3fs\n" %end_time("商品详情"))
 
 
-# In[ ]:
+# In[ xx]:
 
 
 
