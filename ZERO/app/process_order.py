@@ -231,12 +231,16 @@ print("已发未回订单存储完成\n")
 
 macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
-macro_params = r"D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\"
+macro_params = (r"D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\",
+    r"(?:新订单|已发未回订单)(?= 20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2}\.xlsx$)",
+    r"新订单|已发未回",
+    "外发订单"
+    )
 
 
 mo = Macro(visible=EXCEL_VISIBLE)
 mo.open(macro_path)
-mo(name=macro_name,params = (macro_params,))
+mo(name=macro_name,params = macro_params)
 mo.close()
 
 print("%0.3fs\n" %end_time('handle_order'))

@@ -18,7 +18,7 @@ from sqlalchemy import create_engine
 from tools import *
 
 # In[变量]
-
+start_time('user')
 # 分红关系
 commission_dic = {
     "VIP":20,
@@ -35,12 +35,21 @@ df['reg_time'] = pd.to_datetime(df['reg_time'])
 df.sort_values('reg_time',inplace=True)
 
 
+
+
 # In[调整reg_id]
 df.reset_index(drop=True,inplace=True)
 df.index.name = 'reg_id'
 df.index += 1
 df.reset_index(inplace=True)
 
+df_r = df[['user_id','reg_id']]
+df_r.columns = ['parent_user_id','parent_id']
+
+
+df = pd.merge(df,df_r,on='parent_user_id',how='left')
+df.fillna(value={"parent_id":0},inplace=True)
+df['parent_id'] = df['parent_id'].astype(int)
 # I[标记新增ID]
 
 # In[添加所需要字段]:
@@ -102,7 +111,7 @@ for index,row in data.iterrows():
 
 
 # In[保存多级数据]:
-save(data,'处理后的数据')
+save(data,'处理后的用户数据')
 
 
 # In[处理三级数据]:
@@ -122,13 +131,27 @@ save.rel_dir = "T"
 for (grandfather,grandfather_id),t in temp.groupby(['grandfather','grandfather_id']):
     t=  t[['二级用户名','三级用户名','三级用户等级','可抽取佣金']].sort_values('二级用户名')
 
-    save(t, '%s_%s' %(grandfather_id,grandfather))
+    save(t, '三级用户%s_%s' %(grandfather_id,grandfather))
 
     
 
 
 
+macro_path = BEAUTY_VBA_PATH
+macro_name = "美化.xlsm!beautify"
+macro_params = (r"D:\ZERO_TEMP\T\\|D:\ZERO_TEMP\\",
+    "^三级用户|处理后的用户数据",
+    r"[Ss]heet",
+    "用户"
+    )
 
+
+mo = Macro(visible=EXCEL_VISIBLE)
+mo.open(macro_path)
+mo(name=macro_name,params = macro_params)
+mo.close()
+
+print("%0.3fs\n" %end_time('user'))
 
 
 

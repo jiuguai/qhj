@@ -11,8 +11,9 @@ class SaveXl():
         self.writer = writer
         self.rel_dir = rel_dir
 
-    def __call__(self, *args, **kargs):
-        self.save(*args, **kargs)
+    def __call__(self, data, name="", **kargs):
+        self.save_xl(data, name=name, **kargs)
+
     def __setattr__(self, key, value):
         if value is not None and key in {'writer','save_dir'}:
             d = {"writer":None,"save_dir":None}
@@ -39,7 +40,7 @@ class SaveXl():
         print('已存入 %s' %save_path)
 
 
-    def save(self, data, name,**kargs):
+    def save_xl(self, data, name,**kargs):
 
         self.writer = kargs.get('writer', self.writer)
         kargs.setdefault('index',False)

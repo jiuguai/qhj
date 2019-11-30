@@ -133,12 +133,16 @@ writer.save()
 
 macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
-macro_params = r"D:\奇货居\素材\商城图片素材\\"
+macro_params = (r"D:\奇货居\素材\商城图片素材\\",
+    r"^商品信息(?=\.xlsx$)",
+    r"商品详情|下架商品",
+    "商品信息"
+    )
 
 
 mo = Macro(visible=EXCEL_VISIBLE)
 mo.open(macro_path)
-mo(name=macro_name,params = (macro_params,))
+mo(name=macro_name,params = macro_params)
 mo.close()
 
 
