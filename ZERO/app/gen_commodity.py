@@ -109,7 +109,7 @@ sp_data.reset_index(drop=True,inplace=True)
 # 存储
 writer = pd.ExcelWriter(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"))
 
-fields = ['序号','商品ID','类别','商品名简称','商品名','单位', '规格', '规格模式', '市场价', '售价', '规格编码', '交易编码', '发货商','发货商ID','供应商', '供应商ID',
+fields = ['序号','商品ID','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
         '商品编码',  ]
 
 

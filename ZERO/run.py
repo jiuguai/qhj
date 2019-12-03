@@ -7,16 +7,23 @@ from tools import *
 x = get_duplicated_field([1,2,1,3,4,2])
 print(x)
 
-import hashlib
 
-import pandas as pd
 
-l = []
-for i in range(1,26):
-	md5 = hashlib.md5()
-	md5.update(str(i).encode())
-	l.append(md5.hexdigest())
-s = pd.Series(l)
+for i in range(15):
+    print(i)
+
+
+
+#import hashlib
+
+#import pandas as pd
+
+#l = []
+#for i in range(1,26):
+#	md5 = hashlib.md5()
+#	md5.update(str(i).encode())
+#	l.append(md5.hexdigest())
+#s = pd.Series(l)
 
 # import logging
 
