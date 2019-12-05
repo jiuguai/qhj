@@ -1,6 +1,7 @@
 from .config import *
 from .web_map import *
-
+from .request_conf import *
+from .database_config import *
 DEBUG = False
 
 if DEBUG:

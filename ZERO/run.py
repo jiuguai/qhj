@@ -1,16 +1,27 @@
-import sys
-sys.path.append(r"D:\往期\奇货居\ZERO")
+# -*- coding: utf-8 -*-
+"""
+Created on  2019-12-05 14:26:54
 
+@author: zero
+"""
+# In[导包]
+
+import os
+import sys
+sys.path.append(r"D:\往期\QHJ\ZERO")
+import warnings
+warnings.filterwarnings('ignore')
+
+from concurrent.futures import ThreadPoolExecutor
+
+
+import numpy as np
+import pandas as pd
+import pymysql
+from sqlalchemy import create_engine
+import redis
 from tools import *
 
-
-x = get_duplicated_field([1,2,1,3,4,2])
-print(x)
-
-
-
-for i in range(15):
-    print(i)
 
 
 
