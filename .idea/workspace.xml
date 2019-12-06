@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/QHJ.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZERO/login.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZERO/tools/settings/database_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/app/sys_free_goods.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/ZERO/app/modify_attr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/app/gen_commodity.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/gen_commodity.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZERO/app/sys_goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/sys_goods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/tool/mall.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/tool/mall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/tools/custom_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/custom_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,17 +18,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/QHJ$sys_goods_attr.coverage" NAME="sys_goods_attr Coverage Results" MODIFIED="1575616933716" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$run.coverage" NAME="run Coverage Results" MODIFIED="1575528870196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO" />
-    <SUITE FILE_PATH="coverage/QHJ$sys_goods.coverage" NAME="sys_goods Coverage Results" MODIFIED="1575546570248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
+    <SUITE FILE_PATH="coverage/QHJ$sys_goods.coverage" NAME="sys_goods Coverage Results" MODIFIED="1575616923534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$sys_goods_detail.coverage" NAME="sys_goods_detail Coverage Results" MODIFIED="1575546577072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="mall.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/tools/tool/mall.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3276">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modify_attr.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/app/modify_attr.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="sys_goods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-612">
-              <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="252">
+              <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -44,29 +58,11 @@
       <file leaf-file-name="sys_goods_attr.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="76" column="49" lean-forward="true" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+            <state relative-caret-position="836">
+              <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
               <folding>
-                <element signature="e#49#105#0" expanded="true" />
+                <element signature="e#49#98#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="1622" column="35" lean-forward="true" selection-start-line="1622" selection-start-column="35" selection-end-line="1622" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_order.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -74,8 +70,8 @@
       <file leaf-file-name="database_config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="1" column="19" selection-start-line="1" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="324">
+              <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -83,7 +79,7 @@
       <file leaf-file-name="run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-880">
+            <state relative-caret-position="468">
               <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
             </state>
           </provider>
@@ -104,12 +100,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/settings/__init__.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/settings/database_config.py" />
-        <option value="$PROJECT_DIR$/ZERO/app/sys_goods.py" />
         <option value="$PROJECT_DIR$/ZERO/run.py" />
         <option value="$PROJECT_DIR$/ZERO/app/sys_goods_detail.py" />
+        <option value="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" />
+        <option value="$PROJECT_DIR$/ZERO/app/modify_attr.py" />
+        <option value="$PROJECT_DIR$/ZERO/tools/custom_exception.py" />
+        <option value="$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" />
+        <option value="$PROJECT_DIR$/ZERO/app/sys_goods.py" />
       </list>
     </option>
   </component>
@@ -123,8 +122,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="625" />
-    <option name="y" value="43" />
+    <option name="x" value="499" />
+    <option name="y" value="51" />
     <option name="width" value="1400" />
     <option name="height" value="963" />
   </component>
@@ -166,7 +165,7 @@
               <item name="QHJ" type="462c0819:PsiDirectoryNode" />
               <item name="ZERO" type="462c0819:PsiDirectoryNode" />
               <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
+              <item name="tool" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -191,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sys_goods_detail">
+  <component name="RunManager" selected="Python.sys_goods_attr">
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="QHJ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -230,6 +229,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="sys_goods_attr" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="QHJ" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ZERO/app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="sys_goods_detail" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="QHJ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -253,11 +271,13 @@
       <item itemvalue="Python.sys_goods" />
       <item itemvalue="Python.run" />
       <item itemvalue="Python.sys_goods_detail" />
+      <item itemvalue="Python.sys_goods_attr" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.sys_goods_detail" />
+        <item itemvalue="Python.sys_goods_attr" />
         <item itemvalue="Python.sys_goods" />
+        <item itemvalue="Python.sys_goods_detail" />
         <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
@@ -286,29 +306,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32997763" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="12" weight="0.31431767" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.39038032" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.29865772" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.37472036" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.124200426" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.29082775" />
+      <window_info anchor="bottom" id="Run" order="12" weight="0.43288592" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.37248322" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12633263" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="2" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,10 +342,79 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/tool/mall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="2" column="8" selection-start-line="2" selection-end-line="2" selection-end-column="8" />
+        <state relative-caret-position="3276">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/modify_attr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4248">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58392">
+          <caret line="1622" column="35" lean-forward="true" selection-start-line="1622" selection-start-column="35" selection-end-line="1622" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="1" column="19" selection-start-line="1" selection-end-line="1" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3096">
+          <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+          <folding>
+            <element signature="e#49#98#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -339,9 +427,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/config.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/web_map.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -362,41 +447,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-880">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="1622" column="35" lean-forward="true" selection-start-line="1622" selection-start-column="35" selection-end-line="1622" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="1" column="19" selection-start-line="1" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/gen_commodity.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2592" />
@@ -414,12 +464,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/threading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="757" column="32" selection-start-line="757" selection-start-column="26" selection-end-line="757" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3866">
+          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/custom_exception.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/tool/mall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3276">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="1622" column="35" selection-start-line="1622" selection-start-column="35" selection-end-line="1622" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/modify_attr.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="118" column="27" selection-start-line="118" selection-start-column="27" selection-end-line="118" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="76" column="49" lean-forward="true" selection-start-line="76" selection-start-column="49" selection-end-line="76" selection-end-column="49" />
+        <state relative-caret-position="836">
+          <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
           <folding>
-            <element signature="e#49#105#0" expanded="true" />
+            <element signature="e#49#98#0" expanded="true" />
           </folding>
         </state>
       </provider>

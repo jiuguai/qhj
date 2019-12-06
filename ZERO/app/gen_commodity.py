@@ -107,22 +107,31 @@ sp_data.reset_index(drop=True,inplace=True)
 
 
 # 存储
-writer = pd.ExcelWriter(os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx"))
+# 
+sp_data_r = sp_data.copy()
+sp_data_r['商品ID'] = sp_data_r['商品ID'].str.extract('((?<=")S\w+(?="\)$))')
+sp_data_r.to_sql("products",engine,if_exists='replace',index=False)
+
+save_path = os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx")
+writer = pd.ExcelWriter(save_path)
 
 fields = ['序号','商品ID','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
         '商品编码',  ]
+
+print('更新供应商数据到数据库')
 
 
 
 
 commodity_df = add_order(sp_data[sp_data['状态'] != "下架"])[fields]
-print('更新供应商数据到数据库')
-commodity_df.to_sql("products",engine,if_exists='replace',index=False)
+
 
 commodity_df.to_excel(writer,index=False,sheet_name="商品详情")
 
 add_order(sp_data[sp_data['状态'] == "下架"])[fields].to_excel(writer,index=False,sheet_name="下架商品")
 writer.save()
+
+
 
 
 # In[6]:

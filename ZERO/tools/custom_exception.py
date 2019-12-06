@@ -1,5 +1,9 @@
 
 
+
+class Virtual(Exception):
+    pass
+
 # DataFrame 重命名后导致  重名
 class DFFieldsDupRenamed(Exception):
     def __init__(self, msg):
