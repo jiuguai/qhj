@@ -1,46 +1,23 @@
-import pymysql
-from pprint import pprint
-conn = pymysql.connect(
-        host = "localhost",
-        user = "root",
-        password = "jiuguai",
-        database="qhj",
-        charset = "utf8mb4",
-    )
+from urllib import parse
+import hashlib
+result = parse.unquote("%5Cu96C60%5Cu6781")
+print('tracknick',result,u"\u96C60\u6781")
 
+result = parse.unquote("CN%7Czh-CN%7CCNY%7C156")
+print('hng',result)
 
-cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+result = parse.unquote("%E9%9B%860%E6%9E%81")
+print('lid' ,result)
 
-sql = """
-INSERT INTO test (订单号, 运单号, 商品ID, 商品名, 下单用户, 售价,下单时间, 收件人电话, 收件人地址, 供应商) VALUES ('2019102319289237690x', null, 'S0005C0001P02', 'iPhone 11 Pro MAX 深空灰色|512GB|4G全网通 市场价12699元', 'sx',123.416, '2019-11-10 12:30:21', '13910300718', '北京市昌平区北七家镇温泉花园B区70-361', 'S0005C0001P02');
+result = parse.unquote("ccp%3D1")
+print(result)
 
-
-"""
-cursor.execute(sql)
-cursor.executemany( )
-
-conn.commit()
-cursor.close()
-conn.close()
+result = parse.unquote("098%23E1hvW9vUvbpvUvCkvvvvvjiPRs5w1jDERLSyQjYHPmPWgjDbP25psj3nRFqvtjEbRphvCvvvvvvCvpvVvvpvvhCvkphvC99vvOCzLTyCvv9vvUvz5lTdAbyCvm9vvvvvphvvvvvv96CvpvQ5vvm2phCvhRvvvUnvphvppvvv96CvpCCvmphvLvAwZvvj8fVxKX6TnVQEfw1lK2kTWlK9D7zwdiB%2Bm7zwaNpqrADn9WmQD404jomxfJClHdUfUzc6AW9XHkx%2F6jc6f4g7EcqOaNoxdXIPvpvhvv2MMTwCvvpvvUmm")
+print(result)
 
 
 
+md5 = hashlib.md5()
 
-"""
-# 查询数据
-sql = "select left(供应商,5) as 供应商ID from test;"
-
-
-
-cursor.execute(sql)
-# ret = cursor.fetchall()
-ret = cursor.fetchone()
-ret1 = cursor.fetchmany(2)
-
-pprint(ret)
-print('-'*20)
-pprint(ret1)
-
-调用
-
-"""
+md5.update(b'x')
+print(md5.hexdigest())

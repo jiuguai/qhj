@@ -110,3 +110,37 @@ class MallGoodsInfo():
         print('获取goods_id:%s 的属性 ' %goods_id)
         rep = requests.post(url, headers=headers, timeout=MALL_ATTR_REQ_TIMEOUT, data={'goods_id':goods_id})
         return rep.json()
+
+
+
+
+class MallGoods(MallGoodsInfo):
+
+    def __init__(self,key,*args,**kargs):
+
+        super().__init__(key)
+
+    @retry(stop_max_attempt_number=MALL_RETRY_MAX)
+    def set_attr(self, data):
+        headers = {
+            "accept": "application/json, text/plain, */*",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "content-length": "1350",
+            "content-type": "application/x-www-form-urlencoded",
+            "cookie": "PHPSESSID=%s" % self.key,
+            "origin": "https://app0001.yrapps.cn",
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/goodattribute/good_attr_conf.html?goods_id=1&a=1.html",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+
+        }
+        print('访问 %s' % data['goods_id'])
+        url = "https://app0001.yrapps.cn/admin/goodattribute/up_good_attr_conf"
+        rep = requests.post(url, headers=headers, data=data, timeout=MALL_ATTR_REQ_TIMEOUT, )
+        js = rep.json()
+        print(js, data['goods_id'])
+        return js

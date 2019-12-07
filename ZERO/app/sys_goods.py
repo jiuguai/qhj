@@ -46,9 +46,9 @@ redis_con = redis.Redis(**REDIS_MALL_ATTR_DIC)
 # 初始化数据库
 redis_con.delete('goods_id')
 redis_con.delete('free_goods_id')
+redis_con.delete('class_id')
 
-
-def add_goods(doc, goods_type='original'):
+def parse_goods_attr(doc, goods_type='original'):
     goods_l = []
     for tr in doc('tbody tr'):
         d = {}
@@ -83,7 +83,10 @@ def add_goods(doc, goods_type='original'):
 def get_goods(goods_type='original'):
     goods_l = []
     doc = pq(mgi.get_fgoods(goods_type=goods_type))
-    goods_l.extend(add_goods(doc,goods_type=goods_type))
+    goods_l.extend(parse_goods_attr(doc,goods_type=goods_type))
+    if goods_type == 'original':
+        for option in doc('select[name=class_id]>option')[1:]:
+            redis_con.hset('class_id',option.text,option.attrib['value'])
 
     # In[5]:
     # 获取其它页信息
@@ -99,7 +102,7 @@ def get_goods(goods_type='original'):
     for page in range(2 ,max_page+1):
 
         doc = pq(mgi.get_goods(page,goods_type=goods_type))
-        goods_l.extend(add_goods(doc,goods_type=goods_type))
+        goods_l.extend(parse_goods_attr(doc,goods_type=goods_type))
 
     goods_data = pd.DataFrame(goods_l)
 
@@ -119,66 +122,7 @@ conn.commit()
 goods_data.to_sql("sys_goods",engine,if_exists='append',index=False)
 
 
-# import sys_goods_attr
-
-# In[6]:
-
-# # 商品分类
-# for index,row in goods_data.iterrows():
-#
-#     doc = pq(mgi.get_class(row['goods_id']))
-#     option = doc("select>option[selected]")[0]
-#     goods_data.loc[index,"class_id"] = option.attrib['value']
-#     goods_data.loc[index,"class_name"] = option.text
-#
-#
-# print()
-#
-# # In[7]:
-#
-# # 获取属性信息
-# attr_l = []
-#
-#
-# for index,good in goods_data.iterrows():
-#
-#     attr_l.extend(mgi.get_attrs(good['goods_id'])['select_list'])
-#
-# attr_data = pd.DataFrame(attr_l)
-#
-#
-# # In[8]:
-#
-#
-# def get_attrs(attrs):
-#     l = []
-#     for attr in attrs:
-#
-#         l.append(attr['attr_name'])
-#
-#     return "|".join(l)
-#
-# attr_data['attr_name'] = attr_data["attr_name_list"].apply(get_attrs)
-#
-#
-#
-# # In[9]:
-#
-#
-# del attr_data['attt_unit']
-# del attr_data['attr_name_list']
-# del attr_data['attr_old_price']
-# goods_info = pd.merge(goods_data, attr_data,on='goods_id',how='left')
-#
-#
-#
-#
-#
-#
-# # In[13]:
-#
-#
-# print("\n", end_time('get_goods'))
+import sys_goods_attr
 
 
 
