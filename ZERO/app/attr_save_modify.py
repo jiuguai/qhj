@@ -24,47 +24,43 @@ goods_attr_df = goods_attr_df[goods_attr_df['attr_name'].notnull()]
 #goods_attr_df = goods_attr_df[goods_attr_df['attr_goods_code'].str[0] == 'S']
 
 
-
-
-
-
 # In[]
 
-def del_zero_decimal(num):
+def format_decimal(num):
     try:
         num = num if num % int(num) else int(num)
     except ZeroDivisionError:
         num = 0
-    
     return num
 
 def make_attr(index,row):
     attr_name_list = row['attr_name'].split('|')
-    
-    
+
     attr_d ={
         
         "attr_list[%s][attr_name]" %(index): row["attr_name"],
-        "attr_list[%s][attr_price]" %(index):del_zero_decimal(row["attr_price"]),
+        "attr_list[%s][attr_price]" %(index):format_decimal(row["attr_price"]),
         "attr_list[%s][attr_stock]" %(index): int(row["attr_stock"]),
         
         "attr_list[%s][attr_goods_code]" %(index): row["attr_goods_code"],
         "attr_list[%s][goods_id]" %(index): row["goods_id"],
         "attr_list[%s][attr_unit]" %(index): row["attr_unit"],
-        "attr_list[%s][attr_old_price]" %(index): del_zero_decimal(row["attr_old_price"]),
+        "attr_list[%s][attr_old_price]" %(index): format_decimal(row["attr_old_price"]),
      
     }
     
     for attr_name_i,attr_name in enumerate( attr_name_list):
-        attr_d ["attr_list[%s][attr_name_list][%s][attr_name]" %(index,attr_name_i)] = \
-        attr_name
+        attr_d ["attr_list[%s][attr_name_list][%s][attr_name]" %(index,attr_name_i)] = attr_name
 
     return attr_d
 
 
 
-
-
+def gen_attrs(df, goods_id):
+    data = {"goods_id": goods_id}
+    for index, row in df.reset_index(drop=True).iterrows():
+        data.update(make_attr(index, row))
+    yield data
 
 # In[标准化上传数据]
 
@@ -76,12 +72,9 @@ gdb = goods_attr_df.groupby('goods_id')
 for goods_id,df in gdb:
 
 
-    index = 0
     d = {"goods_id":goods_id}
-    for i,row in df.iterrows():
-
+    for index,row in df.reset_index(drop=True).iterrows():
         d.update(make_attr(index,row))
-        index += 1
 
     attrs_l.append(d)
 

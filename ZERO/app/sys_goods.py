@@ -50,9 +50,10 @@ redis_con.delete('class_id')
 
 def parse_goods_attr(doc, goods_type='original'):
     goods_l = []
-    for tr in doc('tbody tr'):
+    for tr in doc('tbody>tr'):
         d = {}
-        d['goods_id'] = tr.xpath('.//img')[0].attrib['goods_id']
+        d['goods_id'] = tr.cssselect('.goods_img')[0].attrib['goods_id']
+
         d['goods_name'] = tr.find_class('info_setting')[0].text.strip()
 
         d['send_price'] = tr.cssselect('input[key=send_price]')[0].attrib['value']

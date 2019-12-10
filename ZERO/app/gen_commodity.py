@@ -82,15 +82,26 @@ for index, shipper_row in shipper_df.iterrows():
             gg_df['供应商'] = gys_row['供应商']
             gg_df['供应商ID'] = gys_row['供应商ID']
             gg_df['商品编码'] = sp_row['商品编码']
+            gg_df['goods_id'] = sp_row['goods_id']
+            gg_df['系统分类'] = sp_row['系统分类']
 #             r'=HYPERLINK("%s\%s\%s\%s","%s")' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir, sp_row['商品名简称'])
             gg_df['商品名简称'] = r'=HYPERLINK("%s","%s")' %(sp_path, sp_row['商品名简称'])
             gg_df['商品名'] = r'=HYPERLINK("%s","' %(gg_path) + gg_df['商品名'] + '")'
             
             gg_df['商品ID'] = gg_df['发货商ID'] + gg_df['供应商ID'] + gg_df['商品编码'] + gg_df['规格编码']
-            gg_df['商品ID'] = r'=HYPERLINK("%s\%s\%s\%s","' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], 
-                                                                gys_dir, sp_dir) + gg_df['商品ID']+'")'
+            gg_df['SPUID'] = gg_df['商品ID'].str[:-3]
             
+            img_dir = os.path.split(gg_path)[0]
+            # gg_df['商品ID'] = r'=HYPERLINK("%s\%s\%s\%s","' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir) + gg_df['商品ID']+'")'
+
+            gg_df['商品ID'] = r'=HYPERLINK("%s","' %(img_dir) + gg_df['商品ID']+'")'
             
+            gg_df['img_dir'] = img_dir
+
+            
+
+
+
             try:
                 gg_df['类别'] = sp_row['类别']
             except:
@@ -115,8 +126,8 @@ sp_data_r.to_sql("products",engine,if_exists='replace',index=False)
 save_path = os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx")
 writer = pd.ExcelWriter(save_path)
 
-fields = ['序号','商品ID','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
-        '商品编码',  ]
+fields = ['序号','商品ID', 'goods_id', 'attr_stock', '系统分类','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
+        '商品编码', 'SPUID', 'goods_type','img_dir' ]
 
 print('更新供应商数据到数据库')
 
@@ -124,11 +135,30 @@ print('更新供应商数据到数据库')
 
 
 commodity_df = add_order(sp_data[sp_data['状态'] != "下架"])[fields]
+# 商品详情
+add_order(commodity_df).to_excel(writer,index=False,sheet_name="商品详情")
 
 
-commodity_df.to_excel(writer,index=False,sheet_name="商品详情")
+# 未上传
+commodity_notup_df = commodity_df[commodity_df['goods_id'].isnull()]
+if len(commodity_notup_df):
+    add_order(commodity_notup_df.drop_duplicates('SPUID')).to_excel(writer,index=False,sheet_name="未上传")
 
-add_order(sp_data[sp_data['状态'] == "下架"])[fields].to_excel(writer,index=False,sheet_name="下架商品")
+
+
+# 下架 以规格为单位
+commodity_off_df = add_order(sp_data[sp_data['状态'] == "下架"])[fields]
+commodity_off_df.to_excel(writer,index=False,sheet_name="商品不同规格下架")
+
+
+# 下架 已 SPU 为单位
+off_set = (set(commodity_off_df['SPUID']) - set(commodity_df['SPUID']))
+spu_off_df = commodity_off_df[commodity_off_df['SPUID'].isin(off_set)]
+
+if len(spu_off_df):
+    add_order(spu_off_df.drop_duplicates('SPUID')).to_excel(writer,index=False,sheet_name="下架商品")
+
+
 writer.save()
 
 
@@ -144,7 +174,7 @@ macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
 macro_params = (r"D:\奇货居\素材\商城图片素材\\",
     r"^商品信息(?=\.xlsx$)",
-    r"商品详情|下架商品",
+    r"商品详情|未上传|商品不同规格下架|下架商品",
     "商品信息"
     )
 

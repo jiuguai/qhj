@@ -130,7 +130,7 @@ def manager(wake_time=5):
         time.sleep(wake_time)
         print('%s %s' %(status, commit_total))
         if status == commit_total and eq_count >= limit_count:
-
+            print('调用存储过程 goods_info + attr_inof -> details ,update old_price')
             cursor.callproc('pro_goods_details')
             conn.commit()
             conn.close()

@@ -17,9 +17,9 @@ conn = redis.Redis(**DOWNLOAD_TIANMAO_PIC_DIC)
 urls = {
     "Huawei Mate 30":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.7.46b210b2EOc9Nq&id=606306790423&skuId=4245743516766&areaId=430100&standard=1&user_id=2838892713&cat_id=2&is_b=1&rn=ac86a186cc50b8320a818218584e7d6c",
     "Huawei Mate 30 Pro":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.46b210b2EOc9Nq&id=606307762219&skuId=4419631387556&areaId=430100&standard=1&user_id=2838892713&cat_id=2&is_b=1&rn=ac86a186cc50b8320a818218584e7d6c",
-    "iPhone 11":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.963c368enRWX8p&id=602659642364&skuId=4387862094596&areaId=430100&standard=1&user_id=1917047079&cat_id=2&is_b=1&rn=8f138c928b23064189b241a24c6537e1",
-    "iPhone 11 Pro":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.29.963c368enRWX8p&id=602451153900&skuId=4387862322527&areaId=430100&standard=1&user_id=1917047079&cat_id=2&is_b=1&rn=8f138c928b23064189b241a24c6537e1",
-    "iPhone 11 Pro Max":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.7.963c368enRWX8p&id=602451665186&skuId=4387862510070&areaId=430100&standard=1&user_id=1917047079&cat_id=2&is_b=1&rn=8f138c928b23064189b241a24c6537e1",
+    "iPhone 11":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.1.963c368enRWX8p&id=602659642364&skuId=4387862094596&areaId=430100&standard=1",
+    "iPhone 11 Pro":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.29.963c368enRWX8p&id=602451153900&skuId=4387862322527&areaId=430100&standard=1",
+    "iPhone 11 Pro Max":"https://detail.tmall.com/item.htm?spm=a220m.1000858.1000725.7.963c368enRWX8p&id=602451665186&skuId=4387862510070&areaId=430100&standard=1",
     "七匹狼":"https://detail.tmall.com/item.htm?spm=a1z10.1-b-s.w5003-22181859704.6.9f9b3a16WyVyen&id=577025909674&scene=taobao_shop&skuId=3973098010411",
 }
 headers = {
@@ -29,7 +29,7 @@ headers = {
 "cache-control": "no-cache",
 "cookie":"cna=b5dJFlMvl2ECAa8IsxkB2wYK; hng=CN%7Czh-CN%7CCNY%7C156; lid=%E9%9B%860%E6%9E%81; enc=JsZ6y6r9t7pJ5xObUYpd24FXEPfc0H0VJJZLGAMKt8sZwtdigEbkDmbxMmheDy6e6xJAyUGNSneYZ5UkROdYUw%3D%3D; cq=ccp%3D1; t=da009be74fe7e8987a56b4c863331289; uc3=nk2=3zY0LDQ%3D&vt3=F8dByua%2FI62GrJlsTEQ%3D&id2=UUkGVJHeIputLA%3D%3D&lg2=U%2BGCWk%2F75gdr5Q%3D%3D; tracknick=%5Cu96C60%5Cu6781; uc4=nk4=0%403cIrCkqmW75J0Z2KYRo7Bg%3D%3D&id4=0%40U2uKc%2BNfWQRDgT3ckBpEht46%2FNFf; lgc=%5Cu96C60%5Cu6781; _tb_token_=e4e30e9f53e1e; cookie2=1e8c1015c8f07536ebc3fc596d2ba3d2; _m_h5_tk=38589e59bb4da943c32b6229ce3c5326_1575724338819; _m_h5_tk_enc=7128e5f1aeb3e53f2d1285d872ba5df0; pnm_cku822=098%23E1hvXpvUvbpvUpCkvvvvvjiPRs5wAj3bP2dUAjEUPmPvsjEVRFdZgjlnRFLwgjnmRTwCvvpvvUmmvphvC9v9vvCvpbyCvm9vvv2UphvvEpvvvzrvpvLQvvm2phCvhRvvvUnvphvppvvv9QnvpCvCkphvC99vvOCzLTyCvv9vvUvzIW6AzQyCvhQUqGWvCsfWaNmxdX3tEbk1DfesRk9czWLvgC0wJhjU%2BneYr2E9ZRAn3w0AhjHUTWex6fItb9TxfwCl533%2BCNLy0nQXHFXXiXVvQE012QhvCvvvvvvtvpvhvvvvvv%3D%3D; l=dBT7zjKlqZXIskxbBOCg5uI8aPbOSIRAguPRwNcXi_5BE6L_59_OkhVNSFp6VjWft8YB4HAa5Iy9-etumJpTY-fP97Rw_xDc.; isg=BOXl0rrw1A_ysDD6_gi_0zSB9KHfipnRcfMruefKoZwr_gVwr3KphHMciCItfrFs",
 "pragma": "no-cache",
-"referer": "http://list.tmall.com/search_product.htm?q=%BB%AA%CE%AA%CA%D6%BB%FA&type=p&vmarket=&spm=a2233.7711963.a2227oh.d100&from=..pc_1_searchbutton",
+# "referer": "http://list.tmall.com/search_product.htm?q=%BB%AA%CE%AA%CA%D6%BB%FA&type=p&vmarket=&spm=a2233.7711963.a2227oh.d100&from=..pc_1_searchbutton",
 "sec-fetch-mode": "navigate",
 "sec-fetch-site": "same-origin",
 "sec-fetch-user": "?1",
@@ -53,10 +53,9 @@ def save_img(file_name ,url):
         f.write(rep.content)
 
 
-save_dir = r"D:\ZERO_TEMP\img\test"
+save_dir = r"D:\ZERO_TEMP\img"
 
 # 用于下载图片
-
 
 
 # conn.delete('tm_imgs')
@@ -77,6 +76,7 @@ save_dir = r"D:\ZERO_TEMP\img\test"
 #     print('请求 %s %s' %(goods_name, url))
 #     rep = requests.get(url,headers=headers)
 #
+#
 #     html = rep.text
 #     d['content'] = html
 #
@@ -86,7 +86,7 @@ save_dir = r"D:\ZERO_TEMP\img\test"
 #     item_info = json.loads(item_info_s)
 #
 #
-#     for li in lis:
+#     for index,li in zip(range(lis.length),lis):
 #         color_name = li.attrib['title']
 #         data_value = ";" + li.attrib['data-value']+";"
 #         try:
@@ -94,7 +94,7 @@ save_dir = r"D:\ZERO_TEMP\img\test"
 #         except:
 #             img_url = "http:" + re.search('(?<=skuMap).+?'+ data_value +'.+?images.+?(//.+?)(?=")',item_info_s,re.M).group(1)
 #
-#         save_path = os.path.join(slide_dir,color_name+".jpg")
+#         save_path = os.path.join(slide_dir,"%s_%s.jpg" %(index,color_name))
 #         d['images']['head'].append({
 #             "save_path":save_path,
 #             'url':img_url
@@ -107,7 +107,7 @@ save_dir = r"D:\ZERO_TEMP\img\test"
 #     print('请求详情 %s %s' % (goods_name, url))
 #     # 获取详情
 #     desc_rep = requests.get(desc_url,headers = headers)
-#
+#     # time.sleep(random.randint(5,7))
 #     desc_html = desc_rep.text
 #     desc_doc = pq(desc_html[10:-3])
 #
@@ -125,17 +125,12 @@ save_dir = r"D:\ZERO_TEMP\img\test"
 
 
 
-#     d = {}
-#     d['images'] = {}
-#     d['images']['head'] = []
-#     d['images']['desc'] = []
-
 
 excecutor = ThreadPoolExecutor(max_workers=10)
 
 while conn.llen('tm_imgs'):
     img_info = conn.rpop("tm_imgs")
-    conn.lpush('tm_imgs_r',img_info)
+    conn.lpush('tm_imgs_r1',img_info)
     img_info = json.loads(img_info)
     for down_info in img_info['images']['head']:
         save_path = down_info['save_path']
