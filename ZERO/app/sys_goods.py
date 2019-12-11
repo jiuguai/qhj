@@ -36,9 +36,9 @@ cursor = conn.cursor()
 
 start_time('get_goods')
 # phpsessid = "ik9uh45jlsaih896qopsupoa3s"
-phpsessid = MALL_KEY
 
-mgi = MallGoodsInfo(phpsessid)
+
+mgi = MallGoodsInfo(MALL_KEY)
 
 # In[3]:
 redis_con = redis.Redis(**REDIS_MALL_ATTR_DIC)
@@ -92,18 +92,12 @@ def get_goods(goods_type='original'):
     # In[5]:
     # 获取其它页信息
     item = doc('.pagination>li>a')
-    max_page = 0
-    l = []
-    def t(k,v):
-        l.append( v.text)
-    item.each(t)
-    if l:
-        max_page = int(l[-2])
 
-    for page in range(2 ,max_page+1):
+    if item.length > 0:
+        for page in range(2 ,int(item[-2].text)+1):
 
-        doc = pq(mgi.get_goods(page,goods_type=goods_type))
-        goods_l.extend(parse_goods_attr(doc,goods_type=goods_type))
+            doc = pq(mgi.get_goods(page,goods_type=goods_type))
+            goods_l.extend(parse_goods_attr(doc,goods_type=goods_type))
 
     goods_data = pd.DataFrame(goods_l)
 
@@ -124,7 +118,7 @@ goods_data.to_sql("sys_goods",engine,if_exists='append',index=False)
 
 
 import sys_goods_attr
-
+#
 
 
 

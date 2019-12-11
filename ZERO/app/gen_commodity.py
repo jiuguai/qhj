@@ -137,7 +137,7 @@ print('更新供应商数据到数据库')
 commodity_df = add_order(sp_data[sp_data['状态'] != "下架"])[fields]
 # 商品详情
 add_order(commodity_df).to_excel(writer,index=False,sheet_name="商品详情")
-
+add_order(commodity_df.drop_duplicates('SPUID')).to_excel(writer,index=False,sheet_name="SPU")
 
 # 未上传
 commodity_notup_df = commodity_df[commodity_df['goods_id'].isnull()]
@@ -174,7 +174,7 @@ macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
 macro_params = (r"D:\奇货居\素材\商城图片素材\\",
     r"^商品信息(?=\.xlsx$)",
-    r"商品详情|未上传|商品不同规格下架|下架商品",
+    r"商品详情|SPU|未上传|商品不同规格下架|下架商品",
     "商品信息"
     )
 

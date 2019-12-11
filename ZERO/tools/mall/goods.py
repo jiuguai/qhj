@@ -8,7 +8,7 @@ import requests
 
 from retrying import retry
 from pyquery import PyQuery as pq
-from ..settings.request_conf import *
+from ..settings import MALL_RETRY_MAX
 
 # 我们相似但不同  
 class MallGoodsInfo():
