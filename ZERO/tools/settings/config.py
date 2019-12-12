@@ -28,7 +28,7 @@ TRACKING_BACK_DIR = os.path.join(BACK_DIR,r'运单\源')
 
 
 # 文件下载目录
-EXPORT_DIR = r"D:\Downloads"
+EXPORT_DIR = r"D:\Downloads\QHJ_MALL"
 
 # 文件时间格式
 DATE_FORMAT = "%Y-%m-%d %H_%M_%S"
@@ -52,8 +52,7 @@ COMMODITY_PATH =os.path.join(COMMODITY_BASE_DIR, "商品信息.xlsx")
 SENDMAIL_ORDER_DIR = os.path.join(WORK_DIR,r"外发订单")
 
 # 订单文件匹配正则
-ORDER_DATE_PATT = '^订单(?P<date>20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2})\.xls[xm]?$'
-
+ORDER_DATE_PATT = '^订单\s+?(?P<date>20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2})\.xls[xm]?$'
 
 # 可入系统 目录
 INPUT_SYS_DIR = os.path.join(WORK_DIR,r'运单信息\可入系统')

@@ -30,3 +30,11 @@ REDIS_MALL_ORDER_DIC = {
     "db":0,
     "decode_responses":True  #设置为True返回的数据格式就是时str类型
 }
+
+
+REDIS_TEST_DIC = {
+    "host":'127.0.0.1',
+    "port":6379,
+    "db":13,
+    "decode_responses":True  #设置为True返回的数据格式就是时str类型
+}

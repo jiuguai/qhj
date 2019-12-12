@@ -6,7 +6,7 @@ class SaveXl():
     def __init__(self, save_dir=None, writer=None, rel_dir="", **kargs):
 
 
-        self.suf = kargs.get('suf'," %s" %(datetime.today().strftime("%Y_%m_%d %H_%M_%S")))
+        self.suf = kargs.get('suf'," %s" %(datetime.today().strftime("%Y-%m-%d %H_%M_%S")))
         self.save_dir = save_dir
         self.writer = writer
         self.rel_dir = rel_dir

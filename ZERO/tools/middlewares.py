@@ -29,7 +29,11 @@ class OrderOutMiddleware():
         return self.temp[out_fields]
 
     def __default_out(self):
-        return self.temp
+        columns = self.temp.columns.to_list()
+        print(columns)
+        columns.remove("供应商")
+        columns.remove("发货商")
+        return self.temp[columns]
 
 
 # 对输入的订单进行处理
@@ -73,7 +77,7 @@ class OrderInMiddleware():
         columns = set(data.columns)
 
         # 必须存在的列, 存疑字段：'运单号','用户等级'
-        key_fields = {'商品ID', '商品名', '用户ID', '用户名','规格', '数量', '单位', '收件人姓名', '实付金额', '收件人电话', '收件人地址', '备注','下单时间' }
+        key_fields = {'商品ID', '商品名','规格', '数量', '单位', '收件人', '支付金额', '联系方式', '收货地址', '备注','下单时间' }
 
         if not key_fields < columns:
             lose_fields = key_fields - columns 
