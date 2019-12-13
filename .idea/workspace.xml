@@ -7,13 +7,12 @@
     <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZERO/app/process_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/process_order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/goods.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZERO/tools/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/database_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/database_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/tool/write.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/tool/write.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/upload/提取订单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/提取订单信息.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/更新运单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/更新运单信息.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +34,7 @@
     <SUITE FILE_PATH="coverage/QHJ$process_order.coverage" NAME="process_order Coverage Results" MODIFIED="1576140727896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$img_upload.coverage" NAME="img_upload Coverage Results" MODIFIED="1575949454059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$Twisted_Trial_in_test_module_py.coverage" NAME="Twisted Trial in test_module.py Coverage Results" MODIFIED="1575865103506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
-    <SUITE FILE_PATH="coverage/QHJ$sys_goods.coverage" NAME="sys_goods Coverage Results" MODIFIED="1576050184731" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
+    <SUITE FILE_PATH="coverage/QHJ$sys_goods.coverage" NAME="sys_goods Coverage Results" MODIFIED="1576216855892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$modify_attr.coverage" NAME="modify_attr Coverage Results" MODIFIED="1575685195740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$sys_goods_detail.coverage" NAME="sys_goods_detail Coverage Results" MODIFIED="1575546577072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
   </component>
@@ -58,15 +57,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="order.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="127" column="24" lean-forward="true" selection-start-line="127" selection-start-column="24" selection-end-line="127" selection-end-column="24" />
+            <state relative-caret-position="128">
+              <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
               <folding>
-                <element signature="e#1#10#0" expanded="true" />
-                <element signature="e#248#1903#0" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sys_goods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="process_order.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="goods.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2232">
+              <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#1765#2951#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="request_conf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -94,8 +141,9 @@
       <find>random_chart</find>
       <find>fm_lt_time</find>
       <find>DATE_FORMAT</find>
-      <find>print</find>
       <find>prc_free_orders</find>
+      <find>conn</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,12 +173,13 @@
         <option value="$PROJECT_DIR$/ZERO/app/gen_commodity.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/tool/write.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/tool/normal.py" />
-        <option value="$PROJECT_DIR$/ZERO/app/process_order.py" />
-        <option value="$PROJECT_DIR$/ZERO/tools/middlewares.py" />
-        <option value="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/settings/database_config.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/settings/config.py" />
+        <option value="$PROJECT_DIR$/ZERO/tools/mall/goods.py" />
+        <option value="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/mall/order.py" />
+        <option value="$PROJECT_DIR$/ZERO/app/process_order.py" />
+        <option value="$PROJECT_DIR$/ZERO/tools/middlewares.py" />
       </list>
     </option>
   </component>
@@ -143,9 +192,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-94" />
-    <option name="y" value="100" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="295" />
+    <option name="y" value="18" />
     <option name="width" value="1400" />
     <option name="height" value="957" />
   </component>
@@ -157,7 +206,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,6 +261,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,7 +287,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.order">
+  <component name="RunManager" selected="Python.sys_goods">
     <configuration name="gen_commodity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="QHJ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,10 +392,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sys_goods" />
         <item itemvalue="Python.order" />
         <item itemvalue="Python.process_order" />
         <item itemvalue="Python.gen_commodity" />
-        <item itemvalue="Python.sys_goods" />
         <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
@@ -385,30 +434,44 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-94" y="100" width="1400" height="957" extended-state="0" />
+    <frame x="295" y="18" width="1400" height="957" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.31208053" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.3691275" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.39038032" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.0" />
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
-      <window_info anchor="bottom" id="Run" order="12" weight="0.21079047" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.18507463" />
+      <window_info anchor="bottom" id="Run" order="12" visible="true" weight="0.2754717" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.15771812" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.1880597" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" x="25" y="377" width="1870" height="286" id="Database" order="6" show_stripe_button="false" sideWeight="0.49840087" type="FLOATING" weight="0.33668903" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.12686567" />
       <window_info id="Favorites" order="2" sideWeight="0.5011468" side_tool="true" weight="0.12686567" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.18507463" />
+      <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.31208053" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.39038032" />
+      <window_info anchor="bottom" id="Run" order="12" weight="0.21079047" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.12686567" />
+      <window_info anchor="bottom" x="25" y="377" width="1870" height="286" id="Database" order="6" show_stripe_button="false" sideWeight="0.49840087" type="FLOATING" weight="0.33668903" />
       <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.3691275" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.5011468" side_tool="true" weight="0.12686567" />
       <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
+      <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,13 +486,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5580">
-          <caret line="159" lean-forward="true" selection-start-line="159" selection-end-line="159" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3276">
@@ -672,26 +728,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/img_upload.py" />
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6192">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#1765#2951#0" />
-            <element signature="e#3056#4068#0" />
-            <element signature="e#4173#5243#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4212">
-          <caret line="120" column="1" selection-start-line="120" selection-start-column="1" selection-end-line="120" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/test/download_tm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="423">
@@ -737,27 +773,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="15" column="57" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2773">
           <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
-          <folding>
-            <element signature="e#1603#2472#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -775,13 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="4" column="18" lean-forward="true" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/gen_commodity.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -789,14 +801,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="127" column="24" lean-forward="true" selection-start-line="127" selection-start-column="24" selection-end-line="127" selection-end-column="24" />
+        <state relative-caret-position="128">
+          <caret line="160" lean-forward="true" selection-start-line="160" selection-end-line="160" />
           <folding>
-            <element signature="e#1#10#0" expanded="true" />
-            <element signature="e#248#1903#0" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order_old.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-533">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2232">
+          <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1765#2951#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="115" column="13" lean-forward="true" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
         </state>
       </provider>
     </entry>

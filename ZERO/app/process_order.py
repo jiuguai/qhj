@@ -80,6 +80,7 @@ data = pd.merge(data,commodity_df,how='left',on='商品ID')
 # 存储新订单信息
 
 fields =  ["订单号","商品ID",'供应商','商品名','数量','规格','单位','收件人','收货地址','联系方式','备注','发货商']
+
 new_order_df = data.copy()
 if len(new_order_df):
     print("存储订外发单信息")

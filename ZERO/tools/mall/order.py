@@ -92,11 +92,8 @@ class MallOrder():
         \s+手机：(?P<联系方式>[^\n]+)
         \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X)
 
-        data_dd = data['订单详情'].str.extract("""
-            (?P<商品名>.+?)(?=（规格[：:])（
-            规格[：:](?P<规格>.+?)(?=[，,]商品ID[：:])
-            [，,]商品ID[：:](?P<商品ID>.+)）""", flags=re.S | re.X)
 
+        data_dd = pd.DataFrame(data['订单详情'].apply(extract_detail).to_list())
         return pd.concat([data, data_info, data_dd], axis=1)
 
 
@@ -122,15 +119,16 @@ class MallOrder():
             data_l.append(row)
 
         data = pd.DataFrame(data_l, columns=columns)
+
         data['数量'] = data['数量'].astype(int)
 
         data['下单时间'] = pd.to_datetime(data['下单时间'])
         data['支付时间'] = pd.to_datetime(data['支付时间'])
-        data['redis_pos'] = data['下单时间'].apply(lambda x: x.strftime('%Y:%m:%d'))
+        # data['redis_pos'] = data['下单时间'].apply(lambda x: x.strftime('%Y:%m:%d'))
         data = data.replace({"支付金额": {"￥": ""}}, regex=True).fillna({"支付金额": 0})
         try:
             data['支付金额'] = data['支付金额'].astype(int)
-        except KeyError:
+        except :
             data['支付金额'] = 0
         return data
 
@@ -140,15 +138,55 @@ class MallOrder():
 
         # patt= "|".join(free_goods['商品名'].unique()).replace("(","\(").replace(")","\)")
         data = self.prc_free_orders(data, **order_kargs)
-        free_data = pd.merge(data
+        if len(data):
+            free_data = pd.merge(data
                              , free_goods, on='商品名', how='left')
-        return free_data
-
+            return free_data
+        return data
     def get_original_orders(self, sku_goods, order_kargs, **kargs):
 
         data = self.get_pure_orders('original', order_kargs)
 
-        data_r = self.prc_original_orders(data, **order_kargs)
-        original_data = pd.merge(data_r, sku_goods[['商品ID', 'goods_type', '单位', '单价']], how='left', on='商品ID')
+        data = self.prc_original_orders(data, **order_kargs)
 
-        return original_data
+
+        if len(data):
+            original_data = pd.merge(data, sku_goods[['商品ID', 'goods_type', '单位', '单价']], how='left', on='商品ID')
+
+            return original_data
+
+        return data
+
+    def ext_order(self, order_kargs, sku_goods, free_goods):
+
+        original_data = self.get_original_orders(sku_goods, order_kargs)
+        free_data = self.get_free_orders(free_goods, order_kargs)
+        data = pd.concat([free_data, original_data], sort=True)
+        if len(data):
+            l = ['订单号', '订单状态', '商品ID', '下单时间', '支付时间', '支付金额',
+
+                 '商品名', '规格', '单位', '单价', '数量', '备注',
+
+                 '收件人', '联系方式', '收货地址', 'goods_type', '发货商ID', '订单详情']
+
+            data_r = data[l]
+
+            data_r.loc[:, 'name'] = "ORDER:NEW:" + data_r['发货商ID']
+            return data_r.reset_index(drop=True)
+        return data
+
+def extract_detail(detail):
+    gg = []
+    for x in re.finditer(".+[\n]|.+$", detail):
+        result = re.search("""
+                (?P<商品名>.+?)(?=（规格[：:])（
+                规格[：:](?P<规格>.+?)(?=[，,]商品ID[：:])
+                [，,]商品ID[：:](?P<商品ID>.+)）(?P<数量>\sX\s\d+)""", x[0], re.X)
+        d = result.groupdict()
+        gg_s = d["规格"] + d['数量']
+        gg.append(gg_s)
+    d = {
+        '商品名': d['商品名'],
+        '商品ID': d['商品ID'],
+        '规格': "，".join(gg)}
+    return d
