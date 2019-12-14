@@ -93,7 +93,7 @@ class MallOrder():
         \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X)
 
 
-        data_dd = pd.DataFrame(data['订单详情'].apply(extract_detail).to_list())
+        data_dd = pd.DataFrame(data['订单详情'].apply(extract_detail).tolist())
         return pd.concat([data, data_info, data_dd], axis=1)
 
 

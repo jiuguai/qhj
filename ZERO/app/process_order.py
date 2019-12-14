@@ -7,7 +7,7 @@
 import os
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
-
+sys.path.append(r"E:\dataparse\Python_DATA_PARSE\QHJ\ZERO")
 import numpy as np
 import pandas as pd
 import pymysql
@@ -117,7 +117,7 @@ print("新订单存储完成\n")
 
 macro_path = BEAUTY_VBA_PATH
 macro_name = "美化.xlsm!beautify"
-macro_params = (r"D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\",
+macro_params = (r"E:\qhj\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\",
     r"(?:新订单|已发未回订单)(?= 20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2}\.xlsx$)",
     r"新订单|已发未回",
     "外发订单"

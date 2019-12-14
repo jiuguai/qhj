@@ -29,7 +29,7 @@ class OrderOutMiddleware():
         return self.temp[out_fields]
 
     def __default_out(self):
-        columns = self.temp.columns.to_list()
+        columns = self.temp.columns.tolist()
         print(columns)
         columns.remove("供应商")
         columns.remove("发货商")
