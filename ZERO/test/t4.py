@@ -1,24 +1,17 @@
-import os
-import sys
-import hashlib
-sys.path.append(r"D:\往期\QHJ\ZERO")
+class OrderEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        
+        if isinstance(obj, datetime.datetime):  
+            return obj.strftime('%Y-%m-%d %H:%M:%S')  
+        else:
+            return super(MyEncoder, self).default(obj)
+    js = json.dumps(row.to_dict(),cls=OrderEncoder,ensure_ascii=False)
 
-import datetime
-import hashlib
-from tools import MallGoods,MALL_KEY
-
-
-mg = MallGoods(MALL_KEY)
-
-import requests
-from pyquery import PyQuery as pq
-
-import re
-
-
-goods_id = 26
-img_dir = r'D:\ZERO_TEMP\img\test\Huawei Mate 30\轮播'
-mg.up_imgs(goods_id,img_dir,"goods_slide")
-
-img_dir = r'D:\ZERO_TEMP\img\test\Huawei Mate 30\详情'
-mg.up_imgs(goods_id,img_dir,"goods_info")
+    order_num = row['订单号']
+    spp_num = row['发货商ID']

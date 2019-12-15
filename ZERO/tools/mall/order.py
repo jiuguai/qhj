@@ -47,7 +47,7 @@ class MallOrder():
             "page": kargs.get("page", 1),
         }
         print('请求 %s' %params)
-        rep = requests.get(url + "?" + urlencode(params), headers=headers)
+        rep = requests.get(url + "?" + urlencode(params), timeout=3,headers=headers)
 
         return rep.text
 
@@ -70,15 +70,47 @@ class MallOrder():
 
         item = doc('.pagination>li>a')
         if item.length > 0:
-            for page in range(2, int(item[-2].text) + 1):
-                kargs.update({"page": page})
 
+            if kargs.get("order_time", "") != "today":
+                # 非 today 一般 只会增加退订项，只会减少 所以从末尾读取
+                for page in range(int(item[-2].text), 1, -1):
+                    kargs.update({"page": page})
+
+                    doc = pq(self.get_order(order_type, **kargs))
+                    for tr in doc('tbody tr').items():
+                        row_l = []
+                        for v in tr('td').items():
+                            row_l.append(v.text())
+                        yield row_l
+            else:
+                # 因为today 请求页面 以最新的数据显示在最前， 所以只能采用追踪到末尾
+            
+                page = 2
+                kargs.update({"page": page})
                 doc = pq(self.get_order(order_type, **kargs))
-                for tr in doc('tbody tr').items():
-                    row_l = []
-                    for v in tr('td').items():
-                        row_l.append(v.text())
-                    yield row_l
+                items = doc('tbody tr')
+
+                while items.length != 0:
+                    for tr in items.items():
+                        row_l = []
+                        for v in tr('td').items():
+                            row_l.append(v.text())
+                        yield row_l
+                    page += 1
+                    kargs.update({"page": page})
+                    doc = pq(self.get_order(order_type, **kargs))
+                    items = doc('tbody tr')                
+                    
+
+            # for page in range(2, int(item[-2].text) + 1):
+            #     kargs.update({"page": page})
+
+            #     doc = pq(self.get_order(order_type, **kargs))
+            #     for tr in doc('tbody tr').items():
+            #         row_l = []
+            #         for v in tr('td').items():
+            #             row_l.append(v.text())
+            #         yield row_l
 
 
 
