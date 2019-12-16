@@ -88,8 +88,8 @@ for index, shipper_row in shipper_df.iterrows():
             gg_df['商品名简称'] = r'=HYPERLINK("%s","%s")' %(sp_path, sp_row['商品名简称'])
             gg_df['商品名'] = r'=HYPERLINK("%s","' %(gg_path) + gg_df['商品名'] + '")'
             
-            gg_df['商品ID'] = gg_df['发货商ID'] + gg_df['供应商ID'] + gg_df['商品编码'] + gg_df['规格编码']
-            gg_df['SPUID'] = gg_df['商品ID'].str[:-3]
+            gg_df['商品ID'] = gg_df['发货商ID'] + gg_df['供应商ID'] + gg_df['商品编码'] + gg_df['规格编码'] + gg_df['交易编码']
+            gg_df['SPUID'] = gg_df['商品ID'].str[:-6]
             
             img_dir = os.path.split(gg_path)[0]
             # gg_df['商品ID'] = r'=HYPERLINK("%s\%s\%s\%s","' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir) + gg_df['商品ID']+'")'

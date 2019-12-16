@@ -203,7 +203,7 @@ class MallOrder():
 
             data_r = data[l]
 
-            data_r.loc[:, 'name'] = "ORDER:NEW:" + data_r['发货商ID']
+      
             return data_r.reset_index(drop=True)
         return data
 

@@ -1,5 +1,5 @@
-# from .config import *
-from .config_h import *
+from .config import *
+# from .config_h import *
 
 from .web_map import *
 from .request_conf import *

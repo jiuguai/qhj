@@ -4,16 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/ZERO/test/test.py" line="10" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/app/process_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/process_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/goods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/middlewares.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/提取订单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/提取订单信息.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/更新运单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/更新运单信息.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,8 +63,8 @@
       <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+            <state relative-caret-position="288">
+              <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -192,7 +183,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="295" />
     <option name="y" value="18" />
     <option name="width" value="1400" />
@@ -442,7 +433,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.0" />
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
-      <window_info anchor="bottom" id="Run" order="12" visible="true" weight="0.2754717" />
+      <window_info anchor="bottom" id="Run" order="12" weight="0.2754717" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.15771812" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.1880597" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
@@ -852,8 +843,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+        <state relative-caret-position="288">
+          <caret line="28" column="36" lean-forward="true" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
         </state>
       </provider>
     </entry>
