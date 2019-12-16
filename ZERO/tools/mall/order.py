@@ -60,17 +60,20 @@ class MallOrder():
         columns = []
         for th in doc('thead th').items():
             columns.append(th.text())
-        yield columns
+        # yield columns
 
         for tr in doc('tbody tr').items():
             row_l = []
             for v in tr('td').items():
                 row_l.append(v.text())
-            yield row_l
+
+            row_data=  dict(zip(columns,row_l))
+            row_data.update({'order_type':order_type})
+            yield row_data
 
         item = doc('.pagination>li>a')
         if item.length > 0:
-
+            
             if kargs.get("order_time", "") != "today":
                 # 非 today 一般 只会增加退订项，只会减少 所以从末尾读取
                 for page in range(int(item[-2].text), 1, -1):
@@ -81,7 +84,11 @@ class MallOrder():
                         row_l = []
                         for v in tr('td').items():
                             row_l.append(v.text())
-                        yield row_l
+
+                        row_data=  dict(zip(columns,row_l))
+                        row_data.update({'order_type':order_type})
+                        yield row_data
+
             else:
                 # 因为today 请求页面 以最新的数据显示在最前， 所以只能采用追踪到末尾
             
@@ -95,7 +102,10 @@ class MallOrder():
                         row_l = []
                         for v in tr('td').items():
                             row_l.append(v.text())
-                        yield row_l
+                            
+                        row_data=  dict(zip(columns,row_l))
+                        row_data.update({'order_type':order_type})
+                        yield row_data
                     page += 1
                     kargs.update({"page": page})
                     doc = pq(self.get_order(order_type, **kargs))
