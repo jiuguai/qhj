@@ -4,22 +4,29 @@
 # In[1]:
 
 
-import os
+import re
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
 sys.path.append(r"E:\dataparse\Python_DATA_PARSE\QHJ\ZERO")
+import warnings
+warnings.filterwarnings("ignore")
+
+from pyquery import PyQuery as pq
+import requests
+from urllib.parse import urlencode,parse_qs
 import numpy as np
 import pandas as pd
+import redis
+
 import pymysql
-from sqlalchemy import create_engine
 
-
-import warnings
-
-warnings.filterwarnings('ignore')
+import json
 from tools import *
 
-start_time('handle_order')
+qm = QHJMall(MALL_KEY)
+
+
+import datetime
 
 
 
@@ -35,27 +42,96 @@ fm_lt_time = None
 读取数据
 
 """
+# 读取 供应商信息
+
+start_time('handle_order')
+
+
+print('读取供应商信息')
+commodity_df = pd.read_excel(COMMODITY_PATH)
+
 
 
 # In[3]:
 
-
-
-
-# 读取 供应商信息
-print('读取供应商信息')
-commodity_df = pd.read_excel(COMMODITY_PATH)
+sku_goods = commodity_df \
+                [['商品ID', '发货商','发货商ID','goods_type','规格','单位', '市场价','售价','商品名简称']] \
+                .rename(columns={"售价":"单价","商品名简称":"商品名"}).fillna({"goods_type":"original"})
+free_goods = sku_goods[sku_goods['goods_type']=='free']
 
 commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
+# 清理环境
+clear_folder(NEW_ORDER_SAVE_DIR, is_recursion=False)
+
+
+# 更新 去重环境
+
+r_conn = redis.Redis(**REDIS_MALL_ORDER_DIC)
+conn = pymysql.connect(**MYSQL_MALL_DIC)
+cursor = conn.cursor()
+result = cursor.execute("select CONCAT(订单号,'-',商品ID) as k from order_details where 下单时间>='%s';" 
+                        %(datetime.date.today() - datetime.timedelta(40)).strftime("%Y-%m-%d"))
+
+r_conn.delete('order:old')
+r_conn.sadd('order:old',*[ key[0] for key in cursor.fetchall()])
+
+
+# 获取免费的最新订单
+l = []
+for order in qm.gen_orders("free",order_status=1):
+    l.append(order)
+    
+data = pd.DataFrame(l)
+
+# 消除重复项目
+data.drop_duplicates('订单号',inplace=True)
+
+def dup_order(order):
+    if r_conn.sismember('order:old',order):
+        return None
+    return order
+
+data['订单号'] = data['订单号'].apply(dup_order)
+data.dropna(subset=['订单号'],inplace=True)
+# 初步处理
+
+print('初步处理')
+data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
+patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
+data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
+
+
+data = pd.concat([data['用户信息'].str.extract("""
+        (?<=下单人：)(?P<收件人>[^\n]+)
+        \s+手机：(?P<联系方式>[^\n]+)
+        \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
+
+data = pd.merge(data
+                             , free_goods, on='商品名', how='left')
+
+data['支付金额'] = 0
+
+
+
+
+# 存储订单信息
+save_dir = r"D:\Downloads\QHJ_MALL"
+save = SaveXl(save_dir)
+save(data,"订单")
+
+
 
 # 读取导出信息
-
 order_path, lt_time = get_new_file_path(EXPORT_DIR,ORDER_DATE_PATT)
 fm_lt_time = lt_time.strftime(DATE_FORMAT)
 
 print('读取 %s' %order_path)
 
+<<<<<<< HEAD
 data = pd.read_excel(order_path,converters={"订单号":str})
+=======
+data = pd.read_excel(order_path, converters={"订单号":str})
+>>>>>>> dev
 
 data['订单号'] = data['订单号'].astype(str)
 data['联系方式'] = data['联系方式'].astype(str)
@@ -66,7 +142,8 @@ data['导出订单时间'] = lt_time
 print('>>>>系统字段统一为本地字段')
 data.rename(columns=FIELDS_SLM_DIC,inplace=True)
 
-
+del data['发货商ID']
+del data['发货商']
 # 获取供应商
 print('>>>>连接供应商信息')
 data = pd.merge(data,commodity_df,how='left',on='商品ID')
@@ -89,7 +166,7 @@ if len(new_order_df):
     new_order_df.to_excel(new_order_path)
 
 
-
+print(new_order_df.columns)
 new_order_df_r = new_order_df[fields]
 
 print()
