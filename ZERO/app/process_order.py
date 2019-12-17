@@ -127,11 +127,9 @@ fm_lt_time = lt_time.strftime(DATE_FORMAT)
 
 print('读取 %s' %order_path)
 
-<<<<<<< HEAD
-data = pd.read_excel(order_path,converters={"订单号":str})
-=======
+
 data = pd.read_excel(order_path, converters={"订单号":str})
->>>>>>> dev
+
 
 data['订单号'] = data['订单号'].astype(str)
 data['联系方式'] = data['联系方式'].astype(str)
