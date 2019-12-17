@@ -46,17 +46,16 @@ for file in os.listdir(sent_dir):
         add_data = add_data[fields]
         add_data = add_data.fillna(value={"备注": ""})
         sql = 'insert into order_details(%s) values(%s)' % (','.join(fields), ",".join(np.repeat('%s', len(fields))))
-        # for index, row in add_data.iterrows():
-        #     row_data = row.tolist()
-        #     print(row_data)
-        #     cursor.execute(sql, row_data)
+        for index, row in add_data.iterrows():
+            row_data = row.tolist()
+
+            cursor.execute(sql, row_data)
+            print(row_data)
+
         conn.commit()
         conn.close()
         shutil.move(sent_path, os.path.join(ORDER_BK_DIR,file))
 
-
-        # data = pd.read_excel(abs_file, index=False)
-        # for index, row in data.iterrows():
 
 
 

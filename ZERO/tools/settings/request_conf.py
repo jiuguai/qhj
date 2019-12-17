@@ -1,6 +1,6 @@
 
 
-MALL_KEY = "9p9usjsdauab5mhm4sttod88q8"
+MALL_KEY = "jefl5ak9rf7d7mp8dncmdna07a"
 
 MALL_RETRY_MAX = 3
 
