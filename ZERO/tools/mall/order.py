@@ -153,6 +153,7 @@ class MallOrder():
         data = pd.concat([data, data_info], axis=1)
         return data
 
+
     def get_pure_orders(self, order_type, order_kargs, **kargs):
         orders = self.gen_orders(order_type, **order_kargs)
         columns = next(orders)
