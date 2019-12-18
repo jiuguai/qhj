@@ -86,16 +86,16 @@ data = pd.DataFrame(l)
 # 消除重复项目
 data.drop_duplicates('订单号',inplace=True)
 
-def dup_order(order):
-    if r_conn.sismember('order:old',order):
+def dup_order(key):
+    if r_conn.sismember('order:old',key):
         return None
     return order
-
-data['订单号'] = data['订单号'].apply(dup_order)
-data.dropna(subset=['订单号'],inplace=True)
+data['key'] = data['订单号'] + "-" + data['商品ID']
+data['key'] = data['key'].apply(dup_order)
+data.dropna(subset=['key'],inplace=True)
 # 初步处理
 
-print('初步处理')
+print('活动产品 初步处理')
 data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
 patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
 data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
@@ -106,8 +106,8 @@ data = pd.concat([data['用户信息'].str.extract("""
         \s+手机：(?P<联系方式>[^\n]+)
         \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
 
-data = pd.merge(data
-                             , free_goods, on='商品名', how='left')
+# 采用商品名匹配
+data = pd.merge(data, free_goods, on='商品名', how='left')
 
 data['支付金额'] = 0
 

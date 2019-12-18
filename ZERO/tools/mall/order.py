@@ -74,7 +74,7 @@ class MallOrder():
         item = doc('.pagination>li>a')
         if item.length > 0:
             
-            if kargs.get("order_time", "") != "today":
+            if kargs.get("order_time", "") != "today" and kargs.get("order_time", "")!="":
                 # 非 today 一般 只会增加退订项，只会减少 所以从末尾读取
                 for page in range(int(item[-2].text), 1, -1):
                     kargs.update({"page": page})
