@@ -20,10 +20,10 @@ class OrderOutMiddleware():
     # 傻傻 输出之前
 
     def __ss_out(self):
-        out_fields = ['商品名','数量','收件人','收货地址','联系方式','备注']
+        out_fields = ['订单号','商品ID','商品名','数量','收件人','收货地址','联系方式','备注']
         self.temp.fillna(value={'备注':"", "规格":""}, inplace=True)
         self.temp.loc[:,'备注'] = "规格:" + self.temp['规格'] + "; " + self.temp['备注']
-        self.temp.loc[:,'收货地址'] = self.temp['收货地址'] + "[O:" + self.temp['订单号'] + "]"
+        self.temp.loc[:,'收货地址'] = self.temp['收货地址'] + "[O:" + self.temp['订单号'] + "-" + self.temp['商品ID'] + "]"
         self.temp.replace({"备注":{"规格:; |(规格.+?;) $":r"\1"}},inplace=True,regex=True)
 
         return self.temp[out_fields]

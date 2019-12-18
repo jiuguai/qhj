@@ -36,7 +36,10 @@ fm_lt_time = None
 
 
 # In[2]:
-
+def dup_order(key):
+    if r_conn.sismember('order:old',key):
+        return None
+    return key
 
 """
 读取数据
@@ -83,35 +86,95 @@ for order in qm.gen_orders("free",order_status=1):
     
 data = pd.DataFrame(l)
 
-# 消除重复项目
-data.drop_duplicates('订单号',inplace=True)
+if len(data):
 
-def dup_order(key):
-    if r_conn.sismember('order:old',key):
-        return None
-    return order
-data['key'] = data['订单号'] + "-" + data['商品ID']
-data['key'] = data['key'].apply(dup_order)
-data.dropna(subset=['key'],inplace=True)
-# 初步处理
-
-print('活动产品 初步处理')
-data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
-patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
-data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
+    # 消除重复项目
+    print('去除重复数据')
+    data.drop_duplicates('订单号',inplace=True)
 
 
-data = pd.concat([data['用户信息'].str.extract("""
-        (?<=下单人：)(?P<收件人>[^\n]+)
-        \s+手机：(?P<联系方式>[^\n]+)
-        \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
+    # 初步处理
 
-# 采用商品名匹配
-data = pd.merge(data, free_goods, on='商品名', how='left')
-
-data['支付金额'] = 0
+    print('活动产品 初步处理')
+    data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
+    patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
+    data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
 
 
+    data = pd.concat([data['用户信息'].str.extract("""
+            (?<=下单人：)(?P<收件人>[^\n]+)
+            \s+手机：(?P<联系方式>[^\n]+)
+            \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
+
+    # 采用商品名匹配
+    data = pd.merge(data, free_goods, on='商品名', how='left')
+
+    # 消除已经获取的数据
+    print('去除已经获取的数据')
+
+    data['key'] = data['订单号'] + "-" + data['商品ID']
+    data['key'] = data['key'].apply(dup_order)
+    data.dropna(subset=['key'],inplace=True)
+
+
+    data['支付金额'] = 0
+
+
+
+free_data = data
+
+
+# 获取商城订单
+l = []
+for order in qm.gen_orders("original",order_status=1):
+    l.append(order)
+
+data = pd.DataFrame(l)
+
+
+if len(data):
+
+    print('去除重复爬取数据')
+    data.drop_duplicates('订单号',inplace=True)
+
+    data = pd.concat([data['用户信息'].str.extract("""
+            (?<=下单人：)(?P<收件人>[^\n]+)
+            \s+手机：(?P<联系方式>[^\n]+)
+            \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
+    data = data.replace({"支付金额": {"￥": ""}}, regex=True).fillna({"支付金额": 0})
+
+    data['支付金额'] = data['支付金额'].astype(int)
+
+    # 拆分为原子
+    data = data.drop(columns='订单详情').join(data['订单详情'].str.split('\n',expand=True).stack().reset_index(level=1, drop=True).rename("详情"))
+
+
+    data = pd.concat([data[['订单号', '收件人','联系方式','收货地址', '用户信息','下单时间','备注','支付金额','支付时间']], data['详情'].str.extract(
+    """
+    (?P<商品名>.+?)(?=（规格[：:])（
+    规格[：:](?P<规格>.+?)(?=[，,]商品ID[：:])
+    [，,]商品ID[：:](?P<商品ID>.+)）\sX(?P<数量>\s\d+)""",flags=re.X)],axis=1)
+
+    data = pd.merge(data,sku_goods[['商品ID','goods_type','单价','发货商']],on="商品ID")
+    data['数量'] = data['数量'].astype(int)
+    data['支付金额'] = data['数量'] * data['单价']   
+
+    print('去除已经获取的数据')
+
+
+    data['key'] = data['订单号'] + "-" + data['商品ID']
+
+    data['key'] = data['key'].apply(dup_order)
+    data.dropna(subset=['key'],inplace=True)
+
+
+
+original_data = data
+
+data = pd.concat([original_data, free_data])
+if len(data) == 0:
+    print('无所需数据')
+    sys.exit()
 
 
 # 存储订单信息
@@ -163,8 +226,6 @@ if len(new_order_df):
     print('>>>>备份')
     new_order_df.to_excel(new_order_path)
 
-
-print(new_order_df.columns)
 new_order_df_r = new_order_df[fields]
 
 print()

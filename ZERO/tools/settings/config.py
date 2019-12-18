@@ -43,8 +43,8 @@ DATE_FORMAT = "%Y-%m-%d %H_%M_%S"
 
 COMMODITY_BASE_DIR = r"D:\奇货居\素材\商城图片素材"
 COMMODITY_PATH =os.path.join(COMMODITY_BASE_DIR, "商品信息.xlsx")
-
-
+GOODS_DIR = COMMODITY_BASE_DIR
+GOODS_PATH = COMMODITY_PATH
 
 
 
