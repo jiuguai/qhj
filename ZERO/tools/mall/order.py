@@ -51,6 +51,39 @@ class MallOrder():
 
         return rep.text
 
+    @retry(stop_max_attempt_number=2)
+    def set_wb(self, order_num, wb_way, wb_num):
+        headers = {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            # "content-length": "53",
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "cookie": "PHPSESSID=%s" %self.key,
+            "origin": "https://app0001.yrapps.cn",
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/order/order_delivery/order_id/7801733718286446.html",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+            "x-requested-with": "XMLHttpRequest",
+        }
+
+        url = r"https://app0001.yrapps.cn/admin/order/send_order.html"
+        data = {
+            "express_info": wb_way,
+            "express_id": wb_num,
+            "order_id": order_num
+        }
+        print(data)
+        rep = requests.post(url,headers=headers, timeout=2, 
+            data=data)
+        js = rep.json()
+        js.update(data)
+
+        return js
+
 
     def gen_orders(self,order_type, **kargs):
 
@@ -174,6 +207,11 @@ class MallOrder():
         except :
             data['支付金额'] = 0
         return data
+
+
+    
+
+
 
     def get_free_orders(self, free_goods, order_kargs, **kargs):
 

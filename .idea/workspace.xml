@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ZERO/app/mysql_insert_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/app/process_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/process_order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/test/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/settings/request_conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/提取订单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/提取订单信息.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/order.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/Untitled.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/upload/更新运单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/更新运单信息.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="7020">
-              <caret line="202" selection-start-line="202" selection-end-line="202" />
+              <caret line="240" selection-start-line="240" selection-end-line="240" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -69,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="972">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -86,8 +82,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+            <state relative-caret-position="936">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -98,8 +94,8 @@
       <file leaf-file-name="mysql_insert_order.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ZERO/app/mysql_insert_order.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="360">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -128,7 +124,7 @@
       <file leaf-file-name="goods.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="360">
               <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -235,6 +231,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -290,7 +287,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -476,7 +472,7 @@
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
       <window_info anchor="bottom" id="Run" order="12" weight="0.22483222" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.13432837" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.13539445" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" x="25" y="377" width="1870" height="286" id="Database" order="6" show_stripe_button="false" sideWeight="0.49840087" type="FLOATING" weight="0.33668903" />
       <window_info anchor="right" id="SciView" order="3" />
@@ -571,9 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -719,9 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -758,9 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1215">
           <caret line="8" column="76" selection-start-line="8" selection-start-column="76" selection-end-line="8" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -802,7 +789,7 @@
     <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7020">
-          <caret line="202" selection-start-line="202" selection-end-line="202" />
+          <caret line="240" selection-start-line="240" selection-end-line="240" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -826,7 +813,7 @@
     <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -839,7 +826,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="360">
           <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -859,8 +846,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="54" column="34" lean-forward="true" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
+        <state relative-caret-position="936">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -869,8 +856,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/app/mysql_insert_order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        <state relative-caret-position="360">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
