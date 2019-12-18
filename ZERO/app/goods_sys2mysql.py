@@ -117,7 +117,7 @@ conn.commit()
 goods_data.to_sql("sys_goods",engine,if_exists='append',index=False)
 
 
-import sys_goods_attr
+import goods_sysattr2mysql
 #
 
 
