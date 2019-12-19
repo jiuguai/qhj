@@ -32,13 +32,13 @@ headers = {
 #   1:VIP
 #   2:VVIP
 data = {
-    "name": "jiuguai",
-    "expire_time": "2020-12-15",
+    "name": "杨晗",
+    "expire_time": "2020-12-19",
     "level": "1",
-    "phone": "18774979616",
+    "phone": "15898538422",
     "province": "湖南",
     "city": "长沙市",
-    "openid": "oDMUF5nBcsojtcOTAfJnLb0Bh0Do",
+    "openid": "oDMUF5nuF8bxZga9I2shOqtoNgA0",
 }
 
 file_path = ""

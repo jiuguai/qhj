@@ -85,6 +85,7 @@ for index, shipper_row in shipper_df.iterrows():
             gg_df['goods_id'] = sp_row['goods_id']
             gg_df['系统分类'] = sp_row['系统分类']
 #             r'=HYPERLINK("%s\%s\%s\%s","%s")' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir, sp_row['商品名简称'])
+            gg_df['goods_name'] = sp_row['商品名简称']
             gg_df['商品名简称'] = r'=HYPERLINK("%s","%s")' %(sp_path, sp_row['商品名简称'])
             gg_df['商品名'] = r'=HYPERLINK("%s","' %(gg_path) + gg_df['商品名'] + '")'
             
@@ -93,7 +94,7 @@ for index, shipper_row in shipper_df.iterrows():
             
             img_dir = os.path.split(gg_path)[0]
             # gg_df['商品ID'] = r'=HYPERLINK("%s\%s\%s\%s","' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir) + gg_df['商品ID']+'")'
-
+            gg_df['goods_id'] = gg_df['商品ID']
             gg_df['商品ID'] = r'=HYPERLINK("%s","' %(img_dir) + gg_df['商品ID']+'")'
             
             gg_df['img_dir'] = img_dir
@@ -111,17 +112,23 @@ for index, shipper_row in shipper_df.iterrows():
 
 sp_data = pd.concat(data_l)
 sp_data.reset_index(drop=True,inplace=True)
- 
+sp_data['状态'][sp_data['状态'].isnull()] = "上架"
 
 
 # In[5]:
+print('更新供应商数据到数据库')
+fileds = sp_data.columns.tolist()
+fileds.remove('商品ID')
+fileds.remove('商品名简称')
+sp_data_r = sp_data[fileds]
 
+sp_data_r = sp_data_r.rename(columns={"goods_id":"商品ID",})
+
+sp_data_r.to_sql("goods",engine,if_exists='replace',index=False)
 
 # 存储
 # 
-sp_data_r = sp_data.copy()
-sp_data_r['商品ID'] = sp_data_r['商品ID'].str.extract('((?<=")S\w+(?="\)$))')
-sp_data_r.to_sql("products",engine,if_exists='replace',index=False)
+
 
 save_path = os.path.join(COMMODITY_BASE_DIR,"商品信息.xlsx")
 writer = pd.ExcelWriter(save_path)
@@ -129,7 +136,7 @@ writer = pd.ExcelWriter(save_path)
 fields = ['序号','商品ID', 'goods_id', 'attr_stock', '系统分类','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
         '商品编码', 'SPUID', 'goods_type','img_dir' ]
 
-print('更新供应商数据到数据库')
+
 
 
 

@@ -8,6 +8,7 @@ class OrderOutMiddleware():
         self.filter_field = filter_field
         self.sf_dic = {
             "傻傻":self.__ss_out,
+            "三金":self.__sj_out,
         }
         
 
@@ -16,6 +17,16 @@ class OrderOutMiddleware():
         self.temp = self.data[self.data[self.filter_field] == middleman_name]
         func = self.sf_dic.get(middleman_name,self.__default_out)
         return func()
+
+    def __sj_out(self):
+        temp = self.__default_out()
+        columns = temp.columns.tolist()
+        temp['快递公司'] = ""
+        temp['运单号'] = ""
+        print(columns)
+        columns.insert(2,"快递公司")
+        columns.insert(3 ,"运单号")
+        return temp[columns]
 
     # 傻傻 输出之前
 
@@ -30,7 +41,7 @@ class OrderOutMiddleware():
 
     def __default_out(self):
         columns = self.temp.columns.tolist()
-        print(columns)
+     
         columns.remove("供应商")
         columns.remove("发货商")
         return self.temp[columns]
