@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="jquery-2.1.3.min.js"></script>
+    <!-- 引入 echarts.js -->
+    <script src="./js/echarts.min.js"></script>
+    <!-- <script src="./js/echarts-gl.min.js"></script> -->
+    <script src="./js/bmap.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1200px;height:800px;"></div>
+
+    <script type="text/javascript" src="./data/coord.json"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=37Ut3ZFzDD01gnFVKsIccrjnudI6SWV5"></script>
+    <script type="text/javascript">
+    myChart = echarts.init(document.getElementById('main'));
+ 
+
+    option = {
+        title: {
+            text: '三金订单分布',
+            // subtext: 'data from PM25.in',
+            // sublink: 'http://www.pm25.in',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter:function(item){
+
+                return `${item['name']}</br>用户：${item['value'][3]['收件人']}</br>联系方式：${item['value'][3]['联系方式']}`
+            }
+        },
+        bmap: {
+
+            center: [109.3359174727,33.1375441246],
+            zoom: 6,
+            roam: true,
+
+        },
+        series: [
+
+
+            {
+                name: '订单数',
+                type: 'scatter',
+                coordinateSystem: 'bmap',
+                data: coord_data,
+                symbolSize: function(val) {
+                
+                    return val[2]*7 ;
+                },
+                label: {
+                    normal: {
+                        formatter: '{b}',
+                        position: 'right',
+                        show: false
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: 'red'
+                    }
+                },
+
+            },
+            // {
+            //     name: 'Top 5',
+            //     type: 'effectScatter',
+            //     coordinateSystem: 'bmap',
+            //     data: data.slice(0, 6),
+            //     symbolSize: function(val) {
+            //         return val[2] / 10;
+            //     },
+            //     showEffectOn: 'render',
+            //     rippleEffect: {
+            //         brushType: 'stroke'
+            //     },
+            //     hoverAnimation: true,
+            //     label: {
+            //         normal: {
+            //             formatter: '{b}',
+            //             position: 'right',
+            //             show: true
+            //         }
+            //     },
+            //     itemStyle: {
+            //         normal: {
+            //             color: 'red',
+            //             shadowBlur: 20,
+            //             shadowColor: '#333'
+            //         }
+            //     },
+
+            //     zlevel: 1
+            // },
+        ]
+    };
+    
+    myChart.setOption(option)
+    var map = myChart.getModel().getComponent('bmap').getBMap();
+    map.setMapStyleV2({     
+      styleId: '9367b3c1599f8fbb69f0cdd979518b9c'
+    });
+    setTimeout(function(){
+        $("[title=到百度地图查看此区域]").remove()
+    },1000)
+    </script>
+</body>
+
+</html>

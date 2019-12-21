@@ -29,6 +29,7 @@ sql = "update order_details set 运单号=%s, 快递公司=%s where 订单号=%s
 fiels = ['运单号','快递公司','订单号','商品ID']
 re_col = {
     "快递方式":"快递公司"
+    
 }
 for file in os.listdir(recv_dir):
     recv_file_path = os.path.join(recv_dir,file)
