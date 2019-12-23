@@ -58,7 +58,7 @@ commodity_df = pd.read_excel(COMMODITY_PATH)
 # In[3]:
 
 sku_goods = commodity_df \
-                [['商品ID', '发货商','发货商ID',"货品编码",'goods_type','规格','单位', '市场价','售价','商品名简称']] \
+                [['商品ID', '发货商','发货商ID',"货品编号",'goods_type','规格','单位', '市场价','售价','商品名简称']] \
                 .rename(columns={"售价":"单价","商品名简称":"商品名"}).fillna({"goods_type":"original"})
 free_goods = sku_goods[sku_goods['goods_type']=='free']
 
@@ -118,7 +118,7 @@ if len(data):
 
 
     data['支付金额'] = 0
-    data['货品编号'] = ""
+
 
 
 free_data = data
@@ -217,7 +217,7 @@ data = pd.merge(data,commodity_df,how='left',on='商品ID')
 
 # 存储新订单信息
 
-fields =  ["订单号","商品ID","货品编码",'供应商','商品名','数量','规格','单位','收件人','收货地址','联系方式','备注','发货商']
+fields =  ["订单号","商品ID","货品编号",'供应商','商品名','数量','规格','单位','收件人','收货地址','联系方式','备注','发货商']
 
 new_order_df = data.copy()
 if len(new_order_df):

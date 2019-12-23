@@ -7,6 +7,7 @@
     <script src="jquery-2.1.3.min.js"></script>
     <!-- 引入 echarts.js -->
     <script src="./js/echarts.min.js"></script>
+    <script>var echarts4 = echarts</script>
 </head>
 
 <body>
@@ -15,7 +16,7 @@
     <script type="text/javascript" src="./data/order.json"></script>
 
     <script type="text/javascript">
-    myChart = echarts.init(document.getElementById('main'));
+    myChart = echarts4.init(document.getElementById('main'));
     var legend_names = []
     var data = []
     var xaxis_data = order_data['xaxis']
@@ -58,6 +59,7 @@
                 return temp
             }
         },
+        
         legend: {
             data:legend_names
         },
