@@ -24,8 +24,8 @@ class OrderOutMiddleware():
         temp['快递公司'] = ""
         temp['运单号'] = ""
         print(columns)
-        columns.insert(3,"快递公司")
-        columns.insert(4 ,"运单号")
+        columns.insert(-1,"快递公司")
+        columns.insert(-1,"运单号")
         return temp[columns]
 
     # 傻傻 输出之前

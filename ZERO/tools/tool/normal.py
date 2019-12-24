@@ -3,10 +3,11 @@ __all__ = ["clear_folder", "get_new_file_path",
              "get_tables",
              "completion_col","get_duplicated_field",
              "start_time", "end_time",
-             "Macro"
+             "Macro","MyEncoder"
              ]
 import re
 import os
+import json
 import time
 
 import numpy as np
@@ -240,3 +241,18 @@ class Macro():
             self.xlapp.Application.Quit()
         except:
             pass
+
+
+class MyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        
+        if isinstance(obj, datetime.datetime):  
+            return obj.strftime('%Y-%m-%d %H:%M:%S')  
+        else:
+            return super(MyEncoder, self).default(obj)

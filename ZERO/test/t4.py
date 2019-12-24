@@ -11,7 +11,8 @@ class OrderEncoder(json.JSONEncoder):
             return obj.strftime('%Y-%m-%d %H:%M:%S')  
         else:
             return super(MyEncoder, self).default(obj)
-    js = json.dumps(row.to_dict(),cls=OrderEncoder,ensure_ascii=False)
+            
+js = json.dumps(row.to_dict(),cls=OrderEncoder,ensure_ascii=False)
 
-    order_num = row['订单号']
-    spp_num = row['发货商ID']
+order_num = row['订单号']
+spp_num = row['发货商ID']

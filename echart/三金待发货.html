@@ -7,255 +7,377 @@
     <script src="./js/jquery-2.1.3.min.js"></script>
     <!-- 引入 echarts.js -->
     <script src="./js/echarts.min.js"></script>
-    <script>var echarts4 = echarts</script>
+    <script src="./js/dark.js"></script>
+    <style>
+        body{
+            padding: 0px;
+            margin: 0px;
+            
+        }
+        .contains{
+            width:2200px;
+            height: 1200px;
+            background-color: #333;
+        }
+        table{
+            /*border:1px solid #fff;*/
+        }
+        table td{
+
+            padding: 0px ;
+        }
+    </style>
 </head>
 
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <table>
-        <thead>
-            <th></th>
-            <th></th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div id="main" style="width: 1400px;height:600px;"></div>
-                </td>
-                <td valign="top">
-                    <div id="main_not_abut" style="width: 400px;height:300px;"></div>
-                    <div id="main_order_detail" style="width: 400px;height:300px;"></div>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-    
-    
-    <script type="text/javascript" src="./data/order.json"></script>
+    <div class="contains">
+        <table>
+            <thead>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr align="center">
+                    <td>
+                        <div id="main_pie_goods" style="width: 350px;height:300px;">
+                    </td>
+                    <td>
+                        <div id="main_not_abut" style="width: 300px;height:300px;"></div>
+                    </td>
+                    <td>
+                        <div id="main_order_detail" style="width: 300px;height:300px;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" valign="top">
+                        <div id="main" style="width: 1200px;height:520px;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="./data/order.json"></script>
+<script type="text/javascript">
+myChart_goods = echarts.init(document.getElementById('main_pie_goods'), 'dark');
+myChart = echarts.init(document.getElementById('main'), 'dark');
+myChart1 = echarts.init(document.getElementById('main_not_abut'), 'dark');
+myChart_detail = echarts.init(document.getElementById('main_order_detail'), 'dark');
 
-    <script type="text/javascript">
-    myChart = echarts4.init(document.getElementById('main'));
-    myChart1 = echarts4.init(document.getElementById('main_not_abut'));
-    myChart_detail = echarts4.init(document.getElementById('main_order_detail'));
-    var legend_names = []
-    var data = []
-    var xaxis_data = order_data['xaxis']
-    console.log(order_data)
+var order_counts = 0
 
-    
-    
-    order_data['abut_data'].forEach(function(v) {
-        legend_names.push(v['name']);
-        data.push({
-            name: v['name'],
-            type: 'bar',
-            stack: 'all',
-            label: {
-                normal: {
-                    show: true,
-                    position: "insideLeft",
-                    offset:[15,0],
-                    formatter:function(item){
-                        value = item['value'] === 0?"":item['value']
-                        return value
-                    }
-                }
-            },
-            // itemStyle:{
-            //     color:"#FF0000"
-            // },
-            data: v['data']
-        })
-    });
+var goods_legend = []
+order_data['goods_order'].forEach(function(item) {
+    order_counts += item['value']
+    goods_legend.push(item['name'])
+})
+
+goods_option = {
+    title: {
+        text: '三金商品占比',
+        left: 'center',
+        subtext: `订单数:${order_counts}`
+    },
+    tooltip: {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        // type: 'scroll',
+        orient: 'vertical',
+        right: 0,
+        top: 20,
+        bottom: 20,
+        data: goods_legend,
+
+        // selected: data.selected
+    },
+    series: [{
+        name: '三金商品',
+        type: 'pie',
+        radius: '50%',
+        center: ['40%', '50%'],
+        data: order_data['goods_order'],
+        itemStyle: {
+            emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+        }
+    }]
+};
+myChart_goods.setOption(goods_option)
+
+
+
+
+var legend_names = []
+var data = []
+var xaxis_data = order_data['xaxis']
+console.log(order_data)
+
+
+order_data['abut_data'].forEach(function(v) {
+    legend_names.push(v['name']);
     data.push({
-        name:order_data['order_data']['name'],
-        type:'line',
-        data:order_data['order_data']['data'],
+        name: v['name'],
+        type: 'bar',
+        stack: 'all',
         label: {
             normal: {
                 show: true,
-                // position: "insideLeft",
-                // offset:[15,0],
-                formatter:function(item){
-                    value = item['value'] === 0?"":item['value']
+                position: "insideTopRight",
+                // offset: [5, 0],
+                formatter: function(item) {
+                    value = item['value'] === 0 ? "" : item['value']
                     return value
                 }
             }
         },
+        // itemStyle:{
+        //     color:"#FF0000"
+        // },
+        data: v['data']
     })
-    // 将下单数 前置与
-    legend_names.unshift(order_data['order_data']['name'])
-    
-
-
-    option = {
-        title:{
-            text:'已对接待回复'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: { // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
-            },
-            formatter:function(item){
-   
-                var total = 0
-                var temp = ""
-                item.forEach(function(v){
-                    temp +=  v['marker'] + v['seriesName'] 
-                    + "：" + v['value'] +"</br>"
-                    total += v['value']
-                })
-                temp = item[0]['name'] + "</br>" + `总计：${total}</br>` + temp
-
-                return temp
-            }
-        },
-        
-        legend: {
-            data:legend_names
-        },
-
-        toolbox: {
+});
+data.push({
+    name: order_data['order_data']['name'],
+    type: 'line',
+    data: order_data['order_data']['data'],
+    label: {
+        normal: {
             show: true,
-            left:"80%",
-            feature: {
-                dataZoom: {
-                    yAxisIndex: 'none'
-                },
-                // dataView: {readOnly: false},
-                magicType: {type: ['line', 'bar']},
-                restore: {},
-                saveAsImage: {}
+            // position: "insideLeft",
+            // offset:[15,0],
+            formatter: function(item) {
+                value = item['value'] === 0 ? "" : item['value']
+                return value
             }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: {
-            type: 'category',
+        }
+    },
+})
+// 将下单数 前置与
+legend_names.unshift(order_data['order_data']['name'])
 
-            data: xaxis_data,
-            axisLabel:{
-                rotate:45,
-                formatter:function(value,index){
-                    let day = "星期" + "日一二三四五六".charAt(new Date(value).getDay())
-                    // console.log(value)
-                    return value + "\n" + day
+
+
+option = {
+    title: {
+        text: '已对接待回复'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: { // 坐标轴指示器，坐标轴触发有效
+            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+        },
+        formatter: function(item) {
+            // name: "2019-12-18"
+            // console.log(item)
+            cur_order_count = order_data['cur_vs_abut_order'][item[0]['name']]['当日']
+            not_cur_order_count = order_data['cur_vs_abut_order'][item[0]['name']]['非当日']
+
+            var total = cur_order_count + not_cur_order_count
+            var temp = ""
+            item.forEach(function(v) {
+                series_name = v['seriesName']
+                temp += v['marker'] + series_name +
+                    "：" + v['value'] + "</br>"
+
+            })
+            temp = item[0]['name'] +
+                "</br>" +
+                `对接：${cur_order_count}C + ${not_cur_order_count} = ${total}</br>` +
+                temp
+
+            return temp
+        }
+    },
+
+    dataZoom: [
+
+        {
+            type: 'inside',
+            xAxisIndex: [0],
+
+            show: true,
+            start: 35,
+            end: 100
+        },
+        {   
+            bottom:0,
+            // textStyle: {
+            //     color: '#8392A5'
+            // },
+            // handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            // handleSize: '80%',
+            dataBackground: {
+                areaStyle: {
+                    color: '#8392A5'
+                },
+                lineStyle: {
+                    opacity: 0.8,
+                    color: '#8392A5'
                 }
-            }
-
-
+            },
+            // handleStyle: {
+            //     color: '#fff',
+            //     shadowBlur: 3,
+            //     shadowColor: 'rgba(0, 0, 0, 0.6)',
+            //     shadowOffsetX: 2,
+            //     shadowOffsetY: 2
+            // }
         },
-        yAxis: {
-            type: 'value'
-        },
-        series: data
-    };
-    console.log(option)
-    myChart.setOption(option)
-
-    myChart.on('click',function(item){
-        console.log(item)
-        // componentType: "series"
-        // seriesName: "是"
-        // name: "2019-12-21"
-        // value: 11
-        // color: "#61a0a8"
-        if (item["componentType"] === "series" && 
-            (item["seriesName"] === "待回复" || item["seriesName"] === "下单数")){
-            
-            let title_text,data_are,handle_chart
-            if (item["seriesName"] === "待回复"){
-                title_text = item["name"]+'对接待回复';
-                data_are = "not_abut_data";
-                handle_chart = myChart1;
-            }else if(item['seriesName'] === "下单数"){
-                title_text = item["name"]+'下单详情';
-                data_are = "order_details";
-                handle_chart = myChart_detail;
-            }
-            
-
-            let xaxis_data = []
-            
-            let values = []
-            for (k in order_data[data_are][item["name"]]){
-                v = order_data[data_are][item["name"]][k]
-                xaxis_data.push(k)
-                values.push(v)
-            }
-            
-            let legend_names = xaxis_data
-
-            let data = {
-                name:item["name"],
-                type:"bar",
-                data:values,
-                itemStyle:{
-                    color:item["color"]
-                },
-                label: {
-                    normal: {
-                        show: true,
-                        position: "insideLeft",
-                        offset:[15,0],
-                        // formatter:function(item){
-                        //     value = item['value'] === 0?"":item['value']
-                        //     return value
-                        // }
-                    }
-                },
-            }
-            // console.log(data)
-            // console.log(xaxis_data)
-            option = {
-                title:{
-                    text:title_text
-                },
-                tooltip: {
-                    trigger: 'axis',
-     
-                },
-
-                toolbox: {
-                    show: true,
-                    feature: {
-                        dataZoom: {
-                            yAxisIndex: 'none'
-                        },
-                        // dataView: {readOnly: false},
-                        // magicType: {type: ['line', 'bar']},
-                        restore: {},
-                        saveAsImage: {}
-                    }
-                },
-
-                // legend: {
-                //     data:legend_names
-                // },
-                xAxis: {
-                    type: 'category',
-                    data: xaxis_data
-
-                },
-                yAxis: {
-                    type: 'value'
-                },
-                series: data
-            };
-            console.log(option)
-            handle_chart.setOption(option);
-
-        };
-
         
-    })
-    </script>
-</body>
+        
+    ],
+
+    legend: {
+        data: legend_names
+    },
+
+    toolbox: {
+        show: true,
+        left: "80%",
+        // orient:"vertical",
+        feature: {
+
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            // dataView: {readOnly: false},
+            magicType: { type: ['line', 'bar'] },
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+
+        data: xaxis_data,
+        axisLabel: {
+            rotate: 45,
+            formatter: function(value, index) {
+                let day = "星期" + "日一二三四五六".charAt(new Date(value).getDay())
+                // console.log(value)
+                return value + "\n" + day
+            }
+        }
+
+
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: data
+};
+console.log(option)
+myChart.setOption(option)
+
+myChart.on('click', function(item) {
+    console.log(item)
+    // componentType: "series"
+    // seriesName: "是"
+    // name: "2019-12-21"
+    // value: 11
+    // color: "#61a0a8"
+    if (item["componentType"] === "series" &&
+        (item["seriesName"] === "待回复" || item["seriesName"] === "下单数")) {
+
+        let title_text, data_are, handle_chart
+        if (item["seriesName"] === "待回复") {
+            title_text = item["name"] + '对接待回复';
+            data_are = "not_abut_data";
+            handle_chart = myChart1;
+        } else if (item['seriesName'] === "下单数") {
+            title_text = item["name"] + '下单详情';
+            data_are = "order_details";
+            handle_chart = myChart_detail;
+        }
+
+
+        let xaxis_data = []
+
+        let values = []
+        for (k in order_data[data_are][item["name"]]) {
+            v = order_data[data_are][item["name"]][k]
+            xaxis_data.push(k)
+            values.push(v)
+        }
+
+        let legend_names = xaxis_data
+
+        let data = {
+            name: item["name"],
+            type: "bar",
+            data: values,
+            itemStyle: {
+                color: item["color"]
+            },
+            label: {
+                normal: {
+                    show: true,
+                    position: "insideLeft",
+                    offset: [15, 0],
+                    // formatter:function(item){
+                    //     value = item['value'] === 0?"":item['value']
+                    //     return value
+                    // }
+                }
+            },
+        }
+        // console.log(data)
+        // console.log(xaxis_data)
+        let option = {
+            title: {
+                text: title_text
+            },
+            tooltip: {
+                trigger: 'axis',
+
+            },
+
+            toolbox: {
+                orient: "vertical",
+                show: true,
+                feature: {
+                    dataZoom: {
+                        yAxisIndex: 'none'
+                    },
+                    dataView: { readOnly: false },
+                    // magicType: {type: ['line', 'bar']},
+                    restore: {},
+                    saveAsImage: {}
+                }
+            },
+
+            // legend: {
+            //     data:legend_names
+            // },
+            xAxis: {
+                type: 'category',
+                data: xaxis_data
+
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: data
+        };
+        console.log(option)
+        handle_chart.setOption(option);
+
+    };
+
+
+})
+</script>
 
 </html>
