@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/ZERO/tools/mall/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/mall/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/更新运单信息.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/更新运单信息.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Apple.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Apple123.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/test/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mail.eml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/question.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/gen_commodity-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/process_order-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/生成分发订单表-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/QR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/gen_commodity.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/process_order.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/test.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/提取免费订单.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/提取商城订单.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/提取订单信息.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/生成分发订单表.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/获取逆地理位置V2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/获取逆地理位置V2.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/规范素材.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/二级推多级.ipynb" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +37,12 @@
     <SUITE FILE_PATH="coverage/QHJ$mall.coverage" NAME="mall Coverage Results" MODIFIED="1575970162822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/tools/tool" />
     <SUITE FILE_PATH="coverage/QHJ$t2.coverage" NAME="t2 Coverage Results" MODIFIED="1575878745263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
     <SUITE FILE_PATH="coverage/QHJ$order.coverage" NAME="order Coverage Results" MODIFIED="1576152061761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/tools/mall" />
+    <SUITE FILE_PATH="coverage/QHJ$app.coverage" NAME="app Coverage Results" MODIFIED="1577438845060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/flask" />
     <SUITE FILE_PATH="coverage/QHJ$attr_update_modify.coverage" NAME="attr_update_modify Coverage Results" MODIFIED="1575686378837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$sys_goods_attr.coverage" NAME="sys_goods_attr Coverage Results" MODIFIED="1575684526313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$run.coverage" NAME="run Coverage Results" MODIFIED="1575528870196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO" />
     <SUITE FILE_PATH="coverage/QHJ$gen_commodity.coverage" NAME="gen_commodity Coverage Results" MODIFIED="1576050197520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
-    <SUITE FILE_PATH="coverage/QHJ$test.coverage" NAME="test Coverage Results" MODIFIED="1576576828660" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
+    <SUITE FILE_PATH="coverage/QHJ$test.coverage" NAME="test Coverage Results" MODIFIED="1577440410504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
     <SUITE FILE_PATH="coverage/QHJ$t4.coverage" NAME="t4 Coverage Results" MODIFIED="1575883558128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
     <SUITE FILE_PATH="coverage/QHJ$process_order.coverage" NAME="process_order Coverage Results" MODIFIED="1576140727896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$img_upload.coverage" NAME="img_upload Coverage Results" MODIFIED="1575949454059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
@@ -48,42 +69,12 @@
     <favorites_list name="QHJ" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="order.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7020">
-              <caret line="240" selection-start-line="240" selection-end-line="240" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="middlewares.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="t4.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/test/t4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="936">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="304">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -91,53 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mysql_insert_order.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ZERO/app/mysql_insert_order.py">
+      <file leaf-file-name="re.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/re.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sys_goods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4032">
-              <caret line="115" column="13" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process_order.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="6" selection-start-line="6" selection-end-line="28" selection-end-column="15" />
-              <folding>
-                <element signature="e#50#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="goods.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="request_conf.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+            <state relative-caret-position="36">
+              <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -168,6 +117,7 @@
       <find>prc_free_orders</find>
       <find>conn</find>
       <find>print</find>
+      <find>女</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,8 +153,8 @@
         <option value="$PROJECT_DIR$/ZERO/tools/mall/order.py" />
         <option value="$PROJECT_DIR$/ZERO/app/process_order.py" />
         <option value="$PROJECT_DIR$/ZERO/tools/middlewares.py" />
-        <option value="$PROJECT_DIR$/ZERO/test/test.py" />
         <option value="$PROJECT_DIR$/ZERO/app/mysql_insert_order.py" />
+        <option value="$PROJECT_DIR$/ZERO/test/test.py" />
       </list>
     </option>
   </component>
@@ -218,8 +168,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="298" />
-    <option name="y" value="-8" />
+    <option name="x" value="746" />
+    <option name="y" value="107" />
     <option name="width" value="1400" />
     <option name="height" value="957" />
   </component>
@@ -231,7 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,6 +236,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,7 +266,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.test">
-    <configuration name="gen_commodity" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="QHJ" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -324,12 +274,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ZERO/app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/flask" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ZERO/app/gen_commodity.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flask/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -414,17 +364,17 @@
     <list>
       <item itemvalue="Python.test" />
       <item itemvalue="Python.sys_goods" />
-      <item itemvalue="Python.gen_commodity" />
       <item itemvalue="Python.process_order" />
       <item itemvalue="Python.order" />
+      <item itemvalue="Python.app" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.sys_goods" />
         <item itemvalue="Python.order" />
         <item itemvalue="Python.process_order" />
-        <item itemvalue="Python.gen_commodity" />
       </list>
     </recent_temporary>
   </component>
@@ -463,22 +413,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.31208053" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.3691275" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="12" weight="0.73378074" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.39038032" />
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
-      <window_info anchor="bottom" id="Run" order="12" weight="0.22483222" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.13539445" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.13859275" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" x="25" y="377" width="1870" height="286" id="Database" order="6" show_stripe_button="false" sideWeight="0.49840087" type="FLOATING" weight="0.33668903" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.12686567" />
-      <window_info id="Favorites" order="2" sideWeight="0.5011468" side_tool="true" weight="0.12686567" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
+      <window_info id="Favorites" order="2" sideWeight="0.5011468" side_tool="true" weight="0.12686567" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -500,13 +449,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="9" column="14" selection-start-line="9" selection-end-line="9" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -514,20 +456,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_save_modify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4248">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_save_modify.py" />
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="58392">
@@ -535,13 +465,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="25" column="10" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/database_config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -556,13 +480,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3096">
-          <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -584,11 +502,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1938" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_order.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tornado/concurrent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -673,31 +587,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/test.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret column="7887" selection-start-column="7887" selection-end-column="7887" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_save_modify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="70" lean-forward="true" selection-start-line="21" selection-start-column="70" selection-end-line="21" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/test.json" />
+    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_save_modify.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/requests/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="835" column="8" selection-start-line="835" selection-start-column="8" selection-end-line="835" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/re.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-557">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
         </state>
       </provider>
     </entry>
@@ -715,13 +610,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_update_modify.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="3" column="11" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_update_modify.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/app/img_upload.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/test/download_tm.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -751,13 +640,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2773">
-          <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods_attr.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -772,51 +655,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/gen_commodity.py">
+    <entry file="file://$PROJECT_DIR$/ZERO/app/gen_commodity.py" />
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order_old.py" />
+    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py" />
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="176" column="14" selection-start-line="176" selection-start-column="14" selection-end-line="176" selection-end-column="14" />
+        <state relative-caret-position="360">
+          <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7020">
-          <caret line="240" selection-start-line="240" selection-end-line="240" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order_old.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-533">
-          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4032">
-          <caret line="115" column="13" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py" />
+    <entry file="file://$PROJECT_DIR$/ZERO/app/mysql_insert_order.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/test/t4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -824,40 +674,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/goods.py">
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/middlewares.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="772">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/process_order.py">
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/mall/order.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="6" selection-start-line="6" selection-end-line="28" selection-end-column="15" />
-          <folding>
-            <element signature="e#50#59#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="36">
+          <caret line="241" selection-start-line="241" selection-end-line="241" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZERO/tools/settings/request_conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/re.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="936">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="304">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/mysql_insert_order.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
