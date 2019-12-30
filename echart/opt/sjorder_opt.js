@@ -14,13 +14,17 @@ var goods_option = function() {
     var option = {
         title: {
             text: '三金商品占比',
-            left: 'center',
+            left: 'left',
             subtext: `订单数:${order_counts}`
         },
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b} : {c} ({d}%)",
+            textStyle:{
+                align:'left'
+            }
         },
+        calculable:true,
         legend: {
             // type: 'scroll',
             orient: 'vertical',
@@ -31,19 +35,25 @@ var goods_option = function() {
 
             // selected: data.selected
         },
+
         series: [{
             name: '三金商品',
             type: 'pie',
             radius: '50%',
             center: ['40%', '50%'],
             data: order_data['goods_order'],
+
             itemStyle: {
                 emphasis: {
                     shadowBlur: 10,
                     shadowOffsetX: 0,
                     shadowColor: 'rgba(0, 0, 0, 0.5)'
                 }
-            }
+            },
+            label: {
+                    align:'right',
+                    formatter: `{b}: {@2012} \n({d}%)`
+            },
         }]
     };
     console.log(option)
@@ -57,12 +67,18 @@ var wait_option = function() {
     var xaxis_data = order_data['xaxis']
     console.log(order_data)
 
-
+    colors = {'已回复':'#dd6b66',
+               "未回复":'#759aa0'}
     order_data['abut_data'].forEach(function(v) {
-
-        // console.log(v)
+        
+         // console.log(v)
         legend_names.push(v['name']);
         data.push({
+            // '#dd6b66','#759aa0','#e69d87'
+            itemStyle:{
+                color:colors[v['name']],
+            },
+    
             name: v['name'],
             type: 'bar',
             stack: 'all',
@@ -85,6 +101,10 @@ var wait_option = function() {
         })
     });
     data.push({
+        // '#dd6b66','#759aa0','#e69d87'
+        itemStyle:{
+            color:'#e69d87',
+        },
         name: order_data['order_data']['name'],
         type: 'line',
         data: order_data['order_data']['data'],
