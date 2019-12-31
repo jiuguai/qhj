@@ -68,7 +68,7 @@ var wait_option = function() {
     console.log(order_data)
 
     colors = {'已回复':'#dd6b66',
-               "未回复":'#759aa0'}
+               "待回复":'#759aa0'}
     order_data['abut_data'].forEach(function(v) {
         
          // console.log(v)
