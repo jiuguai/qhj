@@ -2,29 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/site/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/.idea/site.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/QHJ.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QHJ.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apple.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Apple123.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/test/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/test/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail.eml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/question.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/gen_commodity-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/process_order-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/.ipynb_checkpoints/生成分发订单表-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/QR.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/gen_commodity.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/process_order.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/test.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/提取免费订单.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/提取商城订单.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/提取订单信息.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/生成分发订单表.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/获取逆地理位置V2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/upload/获取逆地理位置V2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/规范素材.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/二级推多级.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZERO/tools/middlewares.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/tools/middlewares.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,9 +34,11 @@
     <SUITE FILE_PATH="coverage/QHJ$process_order.coverage" NAME="process_order Coverage Results" MODIFIED="1576140727896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$img_upload.coverage" NAME="img_upload Coverage Results" MODIFIED="1575949454059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$Twisted_Trial_in_test_module_py.coverage" NAME="Twisted Trial in test_module.py Coverage Results" MODIFIED="1575865103506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/test" />
+    <SUITE FILE_PATH="coverage/QHJ$Flask__site_app_py___1_.coverage" NAME="Flask (site/app.py) (1) Coverage Results" MODIFIED="1578015759514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/QHJ$sys_goods.coverage" NAME="sys_goods Coverage Results" MODIFIED="1576216855892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$modify_attr.coverage" NAME="modify_attr Coverage Results" MODIFIED="1575685195740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
     <SUITE FILE_PATH="coverage/QHJ$sys_goods_detail.coverage" NAME="sys_goods_detail Coverage Results" MODIFIED="1575546577072" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ZERO/app" />
+    <SUITE FILE_PATH="coverage/QHJ$Flask__site_app_py_.coverage" NAME="Flask (site/app.py) Coverage Results" MODIFIED="1578016160177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -69,24 +58,21 @@
     <favorites_list name="QHJ" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="108">
+              <caret line="3" lean-forward="true" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="re.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/re.py">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/flask/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
+            <state relative-caret-position="302">
+              <caret line="888" column="31" selection-start-line="888" selection-start-column="31" selection-end-line="888" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -97,6 +83,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Flask Main" />
       </list>
     </option>
   </component>
@@ -155,6 +142,7 @@
         <option value="$PROJECT_DIR$/ZERO/tools/middlewares.py" />
         <option value="$PROJECT_DIR$/ZERO/app/mysql_insert_order.py" />
         <option value="$PROJECT_DIR$/ZERO/test/test.py" />
+        <option value="$PROJECT_DIR$/site/app.py" />
       </list>
     </option>
   </component>
@@ -167,11 +155,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="746" />
-    <option name="y" value="107" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="62" />
+    <option name="y" value="25" />
     <option name="width" value="1400" />
-    <option name="height" value="957" />
+    <option name="height" value="958" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -191,46 +179,7 @@
             <path>
               <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="mall" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="QHJ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="QHJ" type="462c0819:PsiDirectoryNode" />
-              <item name="ZERO" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-              <item name="tool" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -265,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Flask server.Flask (site/app.py)">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="QHJ" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -280,44 +229,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/flask/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="order" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="QHJ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ZERO/tools/mall" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ZERO/tools/mall/order.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="process_order" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="QHJ" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ZERO/app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ZERO/app/process_order.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -361,20 +272,35 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Flask (site/app.py)" type="Python.FlaskServer" factoryName="Flask server" temporary="true" nameIsGenerated="true">
+      <option name="additionalOptions" value="--host=0.0.0.0 --port=5000" />
+      <option name="application" value="" />
+      <option name="flaskDebug" value="true" />
+      <module name="site" />
+      <option name="target" value="$PROJECT_DIR$/site/app.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+    </configuration>
     <list>
+      <item itemvalue="Flask server.Flask (site/app.py)" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.sys_goods" />
-      <item itemvalue="Python.process_order" />
-      <item itemvalue="Python.order" />
       <item itemvalue="Python.app" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Flask server.Flask (site/app.py)" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.sys_goods" />
-        <item itemvalue="Python.order" />
-        <item itemvalue="Python.process_order" />
       </list>
     </recent_temporary>
   </component>
@@ -412,22 +338,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="62" y="25" width="1400" height="958" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.31208053" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.3691275" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="12" weight="0.73378074" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.39038032" />
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
+      <window_info active="true" anchor="bottom" id="Run" order="12" sideWeight="0.49946696" visible="true" weight="0.4447236" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.13859275" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.19626866" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" x="25" y="377" width="1870" height="286" id="Database" order="6" show_stripe_button="false" sideWeight="0.49840087" type="FLOATING" weight="0.33668903" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32985073" />
       <window_info id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.12686567" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
       <window_info id="Favorites" order="2" sideWeight="0.5011468" side_tool="true" weight="0.12686567" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39932886" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -449,14 +376,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ZERO/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZERO/app/attr_save_modify.py" />
     <entry file="file://$PROJECT_DIR$/ZERO/app/sys_goods.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/redis/client.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -695,27 +614,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/flask/app.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/re.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="6480">
           <caret line="183" column="4" selection-start-line="183" selection-start-column="4" selection-end-line="183" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/test/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
+        <state relative-caret-position="305">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/flask/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="888" column="31" selection-start-line="888" selection-start-column="31" selection-end-line="888" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="3" lean-forward="true" selection-end-line="12" />
         </state>
       </provider>
     </entry>

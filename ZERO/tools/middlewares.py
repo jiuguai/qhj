@@ -1,6 +1,7 @@
+import datetime
+import requests
 from .custom_exception import *
 from .tool import get_duplicated_field
-import requests
 # 输出定单
 class OrderOutMiddleware():
     def __init__(self, data, filter_field):
@@ -20,13 +21,21 @@ class OrderOutMiddleware():
 
     def __sj_out(self):
         temp = self.__default_out()
-        columns = temp.columns.tolist()
-        temp['快递公司'] = ""
-        temp['运单号'] = ""
-        print(columns)
-        columns.insert(-1,"快递公司")
-        columns.insert(-1,"运单号")
-        return temp[columns]
+        temp.rename(columns={
+            "联系方式":"联系电话",
+            "商品名":"货品名称",
+            "收货地址":"地址"},
+            inplace=True)
+        columns = ["订单号", "收件人", "联系电话", "地址", "货品编号", "货品名称", "数量", "备注"]
+        temp = temp[columns]
+        temp['日期'] = datetime.datetime.today().strftime("%Y/%m/%d")
+        add_col = ["单价", "金额", "是否收款", "业务员", "发货仓", "快递公司", "运单号",]
+        for col in add_col:
+            temp[col] = ""
+
+        out_col = ["日期", "订单号", "收件人", "联系电话", "地址", "货品编号", "货品名称", "数量", "单价", "金额", "是否收款", "业务员", "发货仓", "快递公司", "运单号", "备注",]
+        temp = temp[out_col]
+        return temp
 
     # 傻傻 输出之前
 
