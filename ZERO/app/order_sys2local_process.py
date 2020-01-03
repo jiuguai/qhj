@@ -236,12 +236,14 @@ print()
 
 print('存储新订单 %s' %NEW_ORDER_SAVE_DIR)
 odo = OrderOutMiddleware(new_order_df_r,"发货商")
+files_info = {}
 for d_plat in new_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
-    file_name = "%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
+    file_name = "奇货居_%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
     file_path = os.path.join(NEW_ORDER_SAVE_DIR,file_name)
     
     print('>>>>正在存储 %s' %(file_name))
+    files_info[d_plat] = file_path
     temp.to_excel(file_path,index=False,sheet_name="新订单")    
 print("新订单存储完成\n")
 
@@ -249,21 +251,37 @@ print("新订单存储完成\n")
 
 
 # In[11]:
-
-
 macro_path = BEAUTY_VBA_PATH
-macro_name = "美化.xlsm!beautify"
-macro_params = (r"E:\qhj\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\",
-    r"(?:新订单|已发未回订单)(?= 20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2}\.xlsx$)",
-    r"新订单|已发未回",
-    "外发订单"
-    )
-
-
+macro_name = "美化.xlsm!bty"
 mo = Macro(visible=EXCEL_VISIBLE)
+mo.name = macro_name
 mo.open(macro_path)
-mo(name=macro_name,params = macro_params)
+
+for d_plat,file_path in files_info.items():
+
+    macro_params = (file_path, d_plat,r"新订单|已发未回",)
+    mo(params = macro_params)
+
 mo.close()
+
+
+
+
+
+
+# macro_path = BEAUTY_VBA_PATH
+# macro_name = "美化.xlsm!beautify"
+# macro_params = (r"E:\qhj\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\新订单\|D:\奇货居\work\外发订单\已发未收\\",
+#     r"(?:新订单|已发未回订单)(?= 20\d{2}(?:-\d{1,2}){2}\D+?\d{1,2}(?:_\d{1,2}){1,2}\.xlsx$)",
+#     r"新订单|已发未回",
+#     "外发订单"
+#     )
+
+
+# mo = Macro(visible=EXCEL_VISIBLE)
+# mo.open(macro_path)
+# mo(name=macro_name,params = macro_params)
+# mo.close()
 
 print("%0.3fs\n" %end_time('handle_order'))
 
