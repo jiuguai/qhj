@@ -239,7 +239,7 @@ odo = OrderOutMiddleware(new_order_df_r,"发货商")
 files_info = {}
 for d_plat in new_order_df_r['发货商'].unique():
     temp = odo.out(d_plat)
-    file_name = "奇货居_%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
+    file_name = "趣领_%s_新订单 %s.xlsx" %(d_plat,fm_lt_time)
     file_path = os.path.join(NEW_ORDER_SAVE_DIR,file_name)
     
     print('>>>>正在存储 %s' %(file_name))

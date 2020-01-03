@@ -39,7 +39,7 @@ for file in os.listdir(recv_dir):
     if not file.startswith('~$') and os.path.isfile(recv_file_path):
         data = pd.read_excel(recv_file_path,converters={"订单号":str,"运单号":str})
         if "运单号" not in data.columns:
-            data = pd.read_excel(recv_file_path,converters={"订单号":str,"运单号":str},sheet_name="分销订单", header=2)
+            data = pd.read_excel(recv_file_path,converters={"订单号":str,"运单号":str},sheet_name="分销订单", header=3)
             
             data = pd.merge(data,goods_map_df,how='left',on='货品编号')
 
