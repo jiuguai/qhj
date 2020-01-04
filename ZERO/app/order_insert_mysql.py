@@ -33,21 +33,21 @@ ORDER_BK_DIR = r"D:\奇货居\work\外发订单\备份\新"
 
 sent_dir = os.path.join(NEW_ORDER_SAVE_DIR,"已发")
 date_com = re.compile(r'20\d{2}-\d{1,2}-\d{1,2} \d{1,2}_\d{1,2}_\d{1,2}')
+oxm = OrderXlMiddleware(goods_map_df)
+
 for file in os.listdir(sent_dir):
     sent_path = os.path.join(sent_dir,file)
     if not file.startswith("~$") and os.path.isfile(sent_path):
-        if file.startswith("趣领_三金"):
-            # 处理特殊的三金格式
-            sent_data = pd.read_excel(sent_path,converters={"订单号":str},header=3,sheet_name="分销订单")
-            sent_data.dropna(subset=['订单号'],inplace=True)
-            sent_data = pd.merge(sent_data,goods_map_df,how='left',on='货品编号')
-        else:
-            sent_data = pd.read_excel(sent_path,converters={"订单号":str})
+        
+        sent_data = oxm(file, sent_path)
+        if sent_data is None:
+            print(">>>>请检查：%s" %file)
+            continue
 
-       
-        sent_data['key'] = sent_data['订单号'] + "-" + sent_data['商品ID']
         orders = set(sent_data['key'])
-
+        # print(orders)
+        # sys.exit()
+        
         result = date_com.search(file)
         export_date = result.group()
 

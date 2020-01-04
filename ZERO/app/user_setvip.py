@@ -32,18 +32,45 @@ headers = {
 #   1:VIP
 #   2:VVIP
 data = {
-    "name": "杨晗",
-    "expire_time": "2020-12-19",
-    "level": "1",
-    "phone": "15898538422",
+    "name": "安娜",
+    "expire_time": "2021-01-03",
+    "level": "2",
+    "phone": "18874021247",
     "province": "湖南",
     "city": "长沙市",
-    "openid": "oDMUF5nuF8bxZga9I2shOqtoNgA0",
+    "openid": "oDMUF5m_-BrwNs3h_hner1-C7fes",
 }
 
 file_path = ""
 
 
 
-rep = requests.post(url, headers=headers, data=data)
+# rep = requests.post(url, headers=headers, data=data)
+# print(rep.json())
+
+
+normal_url = "https://app0001.yrapps.cn/admin/user/member_activate.html"
+
+
+headers = {
+    
+    "accept": "*/*",
+    "accept-encoding": "gzip, deflate, br",
+    "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+    "content-length": "46",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "cookie": "PHPSESSID=%s" %MALL_KEY,
+    "origin": "https://app0001.yrapps.cn",
+    "referer": "https://app0001.yrapps.cn/admin/User/userMemberList?page=4",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-origin",
+    "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4000.3 Safari/537.36",
+    "x-requested-with": "XMLHttpRequest",
+}
+data = {
+    "openid": "oDMUF5jlKKfVS_5oGGwQ7SrrOh84",
+    "is_shelf": 1
+}
+rep = requests.post(normal_url, headers=headers, data=data)
 print(rep.json())

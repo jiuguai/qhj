@@ -3,7 +3,8 @@ __all__ = ["clear_folder", "get_new_file_path",
              "get_tables",
              "completion_col","get_duplicated_field",
              "start_time", "end_time",
-             "Macro","MyEncoder"
+             "Macro","MyEncoder",
+             "read_xl"
              ]
 import re
 import os
@@ -258,3 +259,22 @@ class MyEncoder(json.JSONEncoder):
             return obj.strftime('%Y-%m-%d %H:%M:%S')  
         else:
             return super(MyEncoder, self).default(obj)
+
+
+# 寻找最合适 有匹配字段的 sheet
+def read_xl(file_name, compare_fields ,smax_row=5, index=False,**kargs):
+    file_obj = pd.ExcelFile(file_name)
+    if isinstance(compare_fields,(list,tuple)):
+        compare_fields = set(compare_fields)
+    elif isinstance(compare_fields,str):
+        compare_fields = {compare_fields}
+    
+    for sht_name in file_obj.sheet_names:
+        sht = file_obj.book.sheet_by_name(sht_name)
+        
+        search_row = smax_row if sht.nrows >= smax_row else sht.nrows
+        # print(sht.nrows,search_row)
+        for row in range(search_row):
+            if compare_fields <= set(sht.row_values(row)):
+                data = file_obj.parse(sheet_name=sht_name,header=row,index=index,**kargs)
+                return data
