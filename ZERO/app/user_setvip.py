@@ -32,21 +32,21 @@ headers = {
 #   1:VIP
 #   2:VVIP
 data = {
-    "name": "安娜",
+    "name": "冯国鑫",
     "expire_time": "2021-01-03",
     "level": "2",
-    "phone": "18874021247",
+    "phone": "13142099997",
     "province": "湖南",
     "city": "长沙市",
-    "openid": "oDMUF5m_-BrwNs3h_hner1-C7fes",
+    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
 }
 
 file_path = ""
 
 
 
-# rep = requests.post(url, headers=headers, data=data)
-# print(rep.json())
+rep = requests.post(url, headers=headers, data=data)
+print(rep.json())
 
 
 normal_url = "https://app0001.yrapps.cn/admin/user/member_activate.html"
@@ -69,7 +69,7 @@ headers = {
     "x-requested-with": "XMLHttpRequest",
 }
 data = {
-    "openid": "oDMUF5jlKKfVS_5oGGwQ7SrrOh84",
+    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
     "is_shelf": 1
 }
 rep = requests.post(normal_url, headers=headers, data=data)
