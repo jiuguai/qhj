@@ -1,12 +1,9 @@
-from hashlib import md5
-import datetime
-today_s = datetime.datetime.today().strftime("%Y-%m-%d %H")
 
-m = md5(b"jiuguai")
+from celery.result import AsyncResult
+from t4 import add,cel
+# cid = add.delay(4,5)
+# print("---",cid)
+result = AsyncResult(id="0de08490-f3df-43cf-8fcd-b7495cd324c",app=cel)
 
-m.update(today_s.encode('utf-8'))
-m.update(b'qhj')
-m_key = m.hexdigest()[:5]
 
-url = "47.105.186.249?key=%s"
-print(url %m_key)
+print(result.get())

@@ -27,32 +27,12 @@ headers = {
 }
 
 
-# level
-#   0:白户
-#   1:VIP
-#   2:VVIP
-data = {
-    "name": "冯国鑫",
-    "expire_time": "2021-01-03",
-    "level": "2",
-    "phone": "13142099997",
-    "province": "湖南",
-    "city": "长沙市",
-    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
-}
-
-file_path = ""
 
 
-
-rep = requests.post(url, headers=headers, data=data)
-print(rep.json())
+activate_url = "https://app0001.yrapps.cn/admin/user/member_activate.html"
 
 
-normal_url = "https://app0001.yrapps.cn/admin/user/member_activate.html"
-
-
-headers = {
+activate_headers = {
     
     "accept": "*/*",
     "accept-encoding": "gzip, deflate, br",
@@ -68,9 +48,27 @@ headers = {
     "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4000.3 Safari/537.36",
     "x-requested-with": "XMLHttpRequest",
 }
+
+# level
+#   0:白户
+#   1:VIP
+#   2:VVIP
 data = {
+    "name": "冯国鑫",
+    "expire_time": "2021-01-03",
+    "level": "2",
+    "phone": "13142099997",
+    "province": "湖南",
+    "city": "长沙市",
+    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
+}
+
+activate_data = {
     "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
     "is_shelf": 1
 }
-rep = requests.post(normal_url, headers=headers, data=data)
+rep = requests.post(url, headers=headers, data=data)
+print(rep.json())
+
+rep = requests.post(activate_url, headers=activate_headers, data=activate_data)
 print(rep.json())
