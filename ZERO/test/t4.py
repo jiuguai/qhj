@@ -1,14 +1,13 @@
-import time
+import argparse
 
-import celery
-broker = "redis://127.0.0.1:6379/0"
+parser = argparse.ArgumentParser()
+parser.add_argument('-v', '--verbosity', 
+	help="increase output verbosity",
+	)
+	# action="store_true"
+try:
+	args = parser.parse_args('-v z '.split())
+	print(args)
+except:
+	print(123)
 
-backend = "redis://127.0.0.1:6379/0"
-
-cel = celery.Celery('test',broker =broker,backend=backend)
-
-
-@cel.task
-def add(x,y):
-	# print(x+y)
-	return x +y 
