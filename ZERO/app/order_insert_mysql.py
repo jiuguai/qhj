@@ -65,6 +65,7 @@ for file in os.listdir(sent_dir):
         add_data = add_data.fillna(value={"备注": "",'支付时间':"1970-01-01 00:00:00"})
         sql = 'insert into order_details(%s) values(%s)' % (','.join(fields), ",".join(np.repeat('%s', len(fields))))
         # sql = 'insert into temp(%s) values(%s)' % (','.join(fields), ",".join(np.repeat('%s', len(fields))))
+        
         for index, row in add_data.iterrows():
             row_data = row.tolist()
             print(row_data)

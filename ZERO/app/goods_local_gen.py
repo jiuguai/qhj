@@ -94,13 +94,10 @@ for index, shipper_row in shipper_df.iterrows():
             
             img_dir = os.path.split(gg_path)[0]
             # gg_df['商品ID'] = r'=HYPERLINK("%s\%s\%s\%s","' %(COMMODITY_BASE_DIR, shipper_row['发货商目录'], gys_dir, sp_dir) + gg_df['商品ID']+'")'
-            gg_df['goods_id'] = gg_df['商品ID']
+            gg_df['com_id'] = gg_df['商品ID']
             gg_df['商品ID'] = r'=HYPERLINK("%s","' %(img_dir) + gg_df['商品ID']+'")'
             
             gg_df['img_dir'] = img_dir
-
-            
-
 
 
             try:
@@ -122,7 +119,7 @@ fileds.remove('商品ID')
 fileds.remove('商品名简称')
 sp_data_r = sp_data[fileds]
 
-sp_data_r = sp_data_r.rename(columns={"goods_id":"商品ID",})
+sp_data_r = sp_data_r.rename(columns={"com_id":"商品ID",})
 
 sp_data_r.to_sql("goods",engine,if_exists='replace',index=False)
 

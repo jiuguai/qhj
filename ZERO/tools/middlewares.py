@@ -151,9 +151,11 @@ class OrderXlMiddleware():
     def __sj_xl(self, file_path, **kargs):
         # data = pd.read_excel(file_path,converters={"订单号":str},header=3,sheet_name="分销订单")
         data = read_xl(file_path,'订单号',converters={"订单号":str})
-        if data is None:return
 
+        if data is None:return
+    
         data.dropna(subset=['商品ID'],inplace=True)
+
         if "商品ID" not in data.columns:
             map_data = self.map_data.get("三金",self.default_map_data)
             data = pd.merge(data,map_data[['商品ID','货品编号']],how='left',on='货品编号')

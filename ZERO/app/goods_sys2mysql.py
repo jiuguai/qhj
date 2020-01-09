@@ -34,11 +34,35 @@ cursor = conn.cursor()
 # In[2]:
 
 
+
+
+
+
+
+
 start_time('get_goods')
 # phpsessid = "ik9uh45jlsaih896qopsupoa3s"
 
+mg = MallGoods(MALL_KEY)
 
-mgi = MallGoodsInfo(MALL_KEY)
+mgi = mg
+
+
+print('更新 商品类型')
+
+class_l = mg.get_classes()
+goods_class_data = pd.DataFrame(class_l)
+cursor.execute('delete from goods_class')
+
+l = []
+for i, row in goods_class_data.iterrows():
+    l.append(row.tolist())
+
+    
+sql = "insert into goods_class(class_id,class_name) values(%s,%s)"
+cursor.executemany(sql,l)
+conn.commit()
+
 
 # In[3]:
 redis_con = redis.Redis(**REDIS_MALL_ATTR_DIC)

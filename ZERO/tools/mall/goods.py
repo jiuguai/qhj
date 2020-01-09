@@ -146,6 +146,115 @@ class MallGoodsInfo():
         rep = requests.post(url, headers=headers, data=data)
         return rep.json()
 
+    @retry(stop_max_attempt_number=2)
+    def set_send_price(self, goods_id, send_price):
+        url = r"https://app0001.yrapps.cn/admin/good/good_opt_data.html"
+        headers = {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "cookie": "PHPSESSID=%s" %self.key, 
+            "origin": "https://app0001.yrapps.cn",
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/Good/goodList",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
+            "x-requested-with": "XMLHttpRequest",
+        }
+        req_data ={
+            "send_price": send_price,
+            "goods_id": goods_id
+        }
+        rep = requests.post(url,data=req_data,headers=headers)
+        js = rep.json()
+        js['goods_id'] = goods_id
+
+        return js
+
+    def get_classes(self):
+        url = 'https://app0001.yrapps.cn/admin/Goodclass/goodClass'
+        headers = {
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "cookie": "PHPSESSID=%s" %self.key,
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/index/index",
+            "sec-fetch-dest": "iframe",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "same-origin",
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4000.3 Safari/537.36",
+        }
+        rep = requests.get(url,headers=headers)
+        doc = pq(rep.text)
+        trs = doc("tr[cate-id]")
+
+        class_l = []
+        for tr in trs.items():
+            class_dic = {
+                "class_id":tr.attr("cate-id"),
+                "class_name":tr("td:nth-child(2)").text()
+            }
+            class_l.append(class_dic)
+
+   
+        return class_l
+
+
+
+    @retry(stop_max_attempt_number=2)
+    def _add_goods(self, data):
+        headers = {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "cookie": "PHPSESSID=%s" %self.key,
+            "origin": "https://app0001.yrapps.cn",
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/good/good_add/is_free/1.html",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4000.3 Safari/537.36",
+            "x-requested-with": "XMLHttpRequest",
+
+
+        }
+        url = "https://app0001.yrapps.cn/admin/good/add_good.html"
+        rep = requests.post(url,data=data,headers=headers)
+
+        return rep.json()
+
+    def add_goods(self,df):
+        is_free = {
+            "free":1
+        }
+
+        for i, row in df.iterrows():
+            data = {
+                "goods_name": row['goods_name'],
+                "class_id": row['class_id'],
+                "goods_info":row['goods_name'],
+                "is_free": is_free.get( row['goods_type'],0),
+                "fake_sales": random.randint(12,30)
+            }
+            
+        
+            result = self._add_goods(data)
+            print(result)
+
+
+        
+
 class MallGoodsAttrs():
     def __init__(self, key, **kargs):
         self.key = key

@@ -262,18 +262,38 @@ class MyEncoder(json.JSONEncoder):
 
 
 # 寻找最合适 有匹配字段的 sheet
-def read_xl(file_name, compare_fields ,smax_row=5, index=False,**kargs):
+def read_xl(file_name, *args, deep_search_row=5, index=False,**kargs):
+
+    if len(args) > 0:
+        compare_fields = args[0]
+    else:
+        compare_fields = False
+
+    if not compare_fields:
+        data = pd.read_excel(file_name,index=index,
+            sheet_name=kargs.get('sheet_name',0),
+            header=kargs.get('header',0))    
+        return data
+
     file_obj = pd.ExcelFile(file_name)
     if isinstance(compare_fields,(list,tuple)):
         compare_fields = set(compare_fields)
     elif isinstance(compare_fields,str):
         compare_fields = {compare_fields}
     
-    for sht_name in file_obj.sheet_names:
+
+    if 'sheet_name' in kargs:
+        sheet_names = [kargs.get("sheet_name")]
+    else:
+        sheet_names = file_obj.sheet_names
+
+
+    for sht_name in sheet_names:
         sht = file_obj.book.sheet_by_name(sht_name)
         
-        search_row = smax_row if sht.nrows >= smax_row else sht.nrows
+        search_row = deep_search_row if sht.nrows >= deep_search_row else sht.nrows
         # print(sht.nrows,search_row)
+        
         for row in range(search_row):
             if compare_fields <= set(sht.row_values(row)):
                 data = file_obj.parse(sheet_name=sht_name,header=row,index=index,**kargs)
