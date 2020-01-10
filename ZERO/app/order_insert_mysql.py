@@ -76,6 +76,15 @@ for file in os.listdir(sent_dir):
   
         shutil.move(sent_path, os.path.join(ORDER_BK_DIR,file))
 
+print('更新商品名')
+cursor.execute("""
+    UPDATE order_details a, goods b
+    SET a.goods_name = b.goods_name
+    WHERE
+        a.goods_name IS NULL
+    AND a.商品ID = b.商品ID;
+    """)
+conn.commit()
 conn.close()
 
 

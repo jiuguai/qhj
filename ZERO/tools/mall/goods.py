@@ -147,7 +147,7 @@ class MallGoodsInfo():
         return rep.json()
 
     @retry(stop_max_attempt_number=2)
-    def set_send_price(self, goods_id, send_price):
+    def set_good_opt(self, data):
         url = r"https://app0001.yrapps.cn/admin/good/good_opt_data.html"
         headers = {
             "accept": "*/*",
@@ -165,13 +165,48 @@ class MallGoodsInfo():
             "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
             "x-requested-with": "XMLHttpRequest",
         }
+        
+        rep = requests.post(url,data=data,headers=headers)
+        js = rep.json()
+        js['goods_id'] = data['goods_id']
+        print(js)
+        return js
+
+    def set_send_price(self, goods_id, send_price):
+        
         req_data ={
             "send_price": send_price,
             "goods_id": goods_id
         }
-        rep = requests.post(url,data=req_data,headers=headers)
+        js = self.set_good_opt(req_data)
+
+        return js
+
+    def set_goods(self, data):
+        url = 'https://app0001.yrapps.cn/admin/good/edit_good.html'
+        headers = {
+            "accept": "*/*",
+            "accept-encoding": "gzip, deflate, br",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "cookie": "PHPSESSID=%s" %self.key,
+            "origin": "https://app0001.yrapps.cn",
+            "pragma": "no-cache",
+            "referer": "https://app0001.yrapps.cn/admin/good/good_edit/goods_id/27.html",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4000.3 Safari/537.36",
+            "x-requested-with": "XMLHttpRequest",
+        }
+
+
+        rep = requests.post(url,data=data,headers=headers)
         js = rep.json()
-        js['goods_id'] = goods_id
+        js['goods_id'] = data['goods_id']
+        print(js)
 
         return js
 
