@@ -76,12 +76,12 @@ class MallOrder():
             "express_id": wb_num,
             "order_id": order_num
         }
-        print(data)
+        
         rep = requests.post(url,headers=headers, timeout=2, 
             data=data)
         js = rep.json()
         js.update(data)
-
+        print(js)
         return js
 
 
