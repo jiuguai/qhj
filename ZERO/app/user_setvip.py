@@ -1,6 +1,8 @@
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
+
 sys.path.append(r"F:\QHJ\qhj\ZERO")
+
 import requests
 
 
@@ -18,7 +20,7 @@ headers = {
     "cookie": "PHPSESSID=%s" %MALL_KEY,
     "origin": "https://app0001.yrapps.cn",
     "pragma": "no-cache",
-    "referer": "https://app0001.yrapps.cn/admin/user/user_member/openid/oDMUF5nBcsojtcOTAfJnLb0Bh0Do.html",
+    # "referer": "https://app0001.yrapps.cn/admin/user/user_member/openid/oDMUF5nBcsojtcOTAfJnLb0Bh0Do.html",
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-origin",
     "user-agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
@@ -54,17 +56,17 @@ activate_headers = {
 #   1:VIP
 #   2:VVIP
 data = {
-    "name": "冯国鑫",
-    "expire_time": "2021-01-03",
+    "name": "黄文昊",
+    "expire_time": "2021-01-13",
     "level": "2",
-    "phone": "13142099997",
+    "phone": "17607313459",
     "province": "湖南",
     "city": "长沙市",
-    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
+    "openid": "oDMUF5iYiRoiVGDeu1w_mIn9Hvkc",
 }
 
 activate_data = {
-    "openid": "oDMUF5nBir2ljeE4GmwWfZR3hXAo",
+    "openid": "oDMUF5iYiRoiVGDeu1w_mIn9Hvkc",
     "is_shelf": 1
 }
 rep = requests.post(url, headers=headers, data=data)
