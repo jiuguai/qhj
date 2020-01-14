@@ -26,11 +26,11 @@ file_o = pd.ExcelFile(goods_path)
 
 
 goods_df = file_o.parse("商品详情",)
-# not_uploaded_df = file_o.parse('未上传')
+not_uploaded_df = file_o.parse('未上传')
 
-not_uploaded_df = file_o.parse('SPU')[:2]
-not_uploaded_df.loc[0,'goods_id'] = 27
-not_uploaded_df.loc[1,'goods_id'] = 31
+# not_uploaded_df = file_o.parse('SPU')[:2]
+# not_uploaded_df.loc[0,'goods_id'] = 27
+# not_uploaded_df.loc[1,'goods_id'] = 31
 
 
 

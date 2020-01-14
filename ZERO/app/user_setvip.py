@@ -3,12 +3,53 @@ sys.path.append(r"D:\往期\QHJ\ZERO")
 
 sys.path.append(r"F:\QHJ\qhj\ZERO")
 
+import pandas as pd
 import requests
-
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from tools import *
-url = "https://app0001.yrapps.cn/admin/user/add_user_member.html"
 
+engine = create_engine('mysql+pymysql://{user}:{password}@{host}:{port}/{database}?charset=utf8mb4'.format(**MYSQL_MALL_DIC),encoding='utf-8')
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+import datetime
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime, UniqueConstraint, Index
+# from sqlalchemy.exc import IntegrityError
+Base = declarative_base()
+
+
+class Users(Base):
+    __tablename__ = 'user'                #表名称
+    openid = Column(String(50), primary_key=True) # primary_key=True设置主键
+    name = Column(String(20), ) #index=True创建索引， nullable=False不为空。
+    phone = Column(String(11))
+    province = Column(String(20))
+    city = Column(String(40))
+
+
+
+
+
+
+path_file = r"C:\Users\qhj01\Desktop\毛总客户.xlsx"
+file_obj = pd.ExcelFile(path_file)
+print(file_obj.sheet_names)
+data = file_obj.parse('会员设置',index=False)
+print(data.columns)
+
+result = session.execute("select openid from user").fetchall()
+openid_set = set([t[0] for t in result])
+
+
+
+
+
+url = "https://app0001.yrapps.cn/admin/user/add_user_member.html"
 
 headers = {
     "accept": "*/*",
@@ -55,22 +96,47 @@ activate_headers = {
 #   0:白户
 #   1:VIP
 #   2:VVIP
-data = {
-    "name": "黄文昊",
-    "expire_time": "2021-01-13",
-    "level": "2",
-    "phone": "17607313459",
-    "province": "湖南",
-    "city": "长沙市",
-    "openid": "oDMUF5iYiRoiVGDeu1w_mIn9Hvkc",
-}
 
-activate_data = {
-    "openid": "oDMUF5iYiRoiVGDeu1w_mIn9Hvkc",
-    "is_shelf": 1
-}
-rep = requests.post(url, headers=headers, data=data)
-print(rep.json())
+own_set = set(data['openid']) - openid_set
+data = data[data['openid'].isin(own_set)]
+# ['name', 'province', 'phone', 'city', 'openid']
+for index, row in data.iterrows():
+  
+    data = {
+        "name": row['name'],
+        "expire_time": "2021-01-16",
+        "level": "2",
+        "phone": row['phone'],
+        "province":row['province'],
+        "city": row['city'],
+        "openid": row['openid'],
 
-rep = requests.post(activate_url, headers=activate_headers, data=activate_data)
-print(rep.json())
+    }
+
+    activate_data = {
+        "openid": row['openid'],
+        "is_shelf": 1
+    }
+    rep = requests.post(url, headers=headers, data=data)
+    js = rep.json()
+    js.update({'openid':row['openid'],'operation':'设置VIP'})
+    print(js)
+
+    rep = requests.post(activate_url, headers=activate_headers, data=activate_data)
+    js.update({"openid":row['openid'],'operation':'激活'})
+    print(js)
+
+
+    row_data = row.to_dict()
+    print(row_data)
+    print('-'*20)
+    obj = Users(**row_data)
+    session.add(obj)
+    try:
+
+        session.commit()
+    except :
+        session.rollback()
+        
+
+session.close()
