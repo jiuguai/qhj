@@ -7,7 +7,7 @@
 import re
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
-sys.path.append(r"E:\dataparse\Python_DATA_PARSE\QHJ\ZERO")
+sys.path.append(r"F:\QHJ\qhj\ZERO")
 import warnings
 warnings.filterwarnings("ignore")
 
