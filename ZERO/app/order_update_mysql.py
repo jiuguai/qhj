@@ -35,7 +35,7 @@ for file in os.listdir(recv_dir):
     recv_file_path = os.path.join(recv_dir,file)
     if not file.startswith('~$') and os.path.isfile(recv_file_path):
         data = wxm(file, recv_file_path)
-
+        data.dropna(subset=['运单号'], inplace=True)
         for index, row in data.iterrows():
             row_data = row.tolist()
             print(row_data)
