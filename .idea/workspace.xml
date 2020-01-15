@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/app/goods_up_sys.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/app/goods_up_sys.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZERO/test/t4.py" beforeDir="false" afterPath="$PROJECT_DIR$/ZERO/test/t4.py" afterDir="false" />
-    </list>
+    <list default="true" id="0f308286-060b-4709-96e6-fc4a11bca8c0" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +60,7 @@
       <file leaf-file-name="t4.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ZERO/test/t4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
+            <state relative-caret-position="435">
               <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
@@ -169,7 +165,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="408" />
     <option name="y" value="598" />
     <option name="width" value="1400" />
@@ -384,13 +380,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="102" y="624" width="1400" height="1021" extended-state="0" />
+    <frame x="408" y="598" width="1400" height="1021" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" sideWeight="0.49946696" weight="0.31208053" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50053304" side_tool="true" weight="0.5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="12" sideWeight="0.49946696" visible="true" weight="0.3515716" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.49946696" weight="0.3515716" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.39038032" />
       <window_info anchor="bottom" content_ui="combo" x="717" y="257" width="1030" height="776" id="Python Console" order="13" sideWeight="0.49946696" weight="0.33557048" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.40044743" />
@@ -690,7 +686,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ZERO/test/t4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
+        <state relative-caret-position="435">
           <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />

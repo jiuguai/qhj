@@ -15,26 +15,6 @@ engine = create_engine('mysql+pymysql://{user}:{password}@{host}:{port}/{databas
 Session = sessionmaker(bind=engine)
 session = Session()
 
-import datetime
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, DateTime, UniqueConstraint, Index
-# from sqlalchemy.exc import IntegrityError
-Base = declarative_base()
-
-
-class Users(Base):
-    __tablename__ = 'user'                #表名称
-    openid = Column(String(50), primary_key=True) # primary_key=True设置主键
-    name = Column(String(20), ) #index=True创建索引， nullable=False不为空。
-    phone = Column(String(11))
-    province = Column(String(20))
-    city = Column(String(40))
-
-
-
-
-
 
 path_file = r"C:\Users\qhj01\Desktop\毛总客户.xlsx"
 file_obj = pd.ExcelFile(path_file)
@@ -101,7 +81,7 @@ own_set = set(data['openid']) - openid_set
 data = data[data['openid'].isin(own_set)]
 # ['name', 'province', 'phone', 'city', 'openid']
 for index, row in data.iterrows():
-  
+    print(row['openid'])
     data = {
         "name": row['name'],
         "expire_time": "2021-01-16",
@@ -118,6 +98,7 @@ for index, row in data.iterrows():
         "is_shelf": 1
     }
     rep = requests.post(url, headers=headers, data=data)
+
     js = rep.json()
     js.update({'openid':row['openid'],'operation':'设置VIP'})
     print(js)
@@ -126,17 +107,18 @@ for index, row in data.iterrows():
     js.update({"openid":row['openid'],'operation':'激活'})
     print(js)
 
-
-    row_data = row.to_dict()
-    print(row_data)
     print('-'*20)
-    obj = Users(**row_data)
-    session.add(obj)
-    try:
 
-        session.commit()
-    except :
-        session.rollback()
+    # row_data = row.to_dict()
+    # print(row_data)
+    
+    # obj = Users(**row_data)
+    # session.add(obj)
+    # try:
+
+    #     session.commit()
+    # except :
+    #     session.rollback()
         
 
 session.close()
