@@ -79,12 +79,19 @@ r_conn.delete('order:old')
 r_conn.sadd('order:old',*[ key[0] for key in cursor.fetchall()])
 
 
-# 获取免费的最新订单
-l = []
-for order in qm.gen_orders("free",order_status=1):
-    l.append(order)
+## 获取免费的最新订单
+#同步
+
+# l = []
+# for order in qm.gen_orders("free",order_status=1):
+#     l.append(order)
     
-data = pd.DataFrame(l)
+# data = pd.DataFrame(l)
+
+# 异步
+start_time('free_get_orders')
+data = qm.async_get_orders('free', 1, coroutine_max=100)
+print('-->free 耗时:%s' %(end_time('free_get_orders')))
 
 if len(data):
 
@@ -125,11 +132,18 @@ free_data = data
 
 
 # 获取商城订单
-l = []
-for order in qm.gen_orders("original",order_status=1):
-    l.append(order)
+# # 同步
+# l = []
+# for order in qm.gen_orders("original",order_status=1):
+#     l.append(order)
 
-data = pd.DataFrame(l)
+# data = pd.DataFrame(l)
+
+
+# 异步
+start_time('original_get_orders')
+data = qm.async_get_orders('original', 1, coroutine_max=100)
+print('-->free 耗时:%s' %(end_time('original_get_orders')))
 
 
 if len(data):

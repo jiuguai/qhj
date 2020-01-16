@@ -1,3 +1,4 @@
+import os
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
 
@@ -15,18 +16,20 @@ engine = create_engine('mysql+pymysql://{user}:{password}@{host}:{port}/{databas
 Session = sessionmaker(bind=engine)
 session = Session()
 
+l = []
+file_dir = r"C:\Users\qhj01\Desktop\客户"
+for file in os.listdir(file_dir):
+    file_path = os.path.join(file_dir,file)
+    if os.path.isfile(file_path):
+        
+        file_obj = pd.ExcelFile(file_path)
+        data = file_obj.parse('会员设置',index=False)
+        l.append(data)
 
-path_file = r"C:\Users\qhj01\Desktop\毛总客户.xlsx"
-file_obj = pd.ExcelFile(path_file)
-print(file_obj.sheet_names)
-data = file_obj.parse('会员设置',index=False)
-print(data.columns)
+data = pd.concat(l)
 
 result = session.execute("select openid from user").fetchall()
 openid_set = set([t[0] for t in result])
-
-
-
 
 
 url = "https://app0001.yrapps.cn/admin/user/add_user_member.html"

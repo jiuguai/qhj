@@ -34,7 +34,9 @@ sql = "update order_details set 运单号=%s, 快递公司=%s where 订单号=%s
 for file in os.listdir(recv_dir):
     recv_file_path = os.path.join(recv_dir,file)
     if not file.startswith('~$') and os.path.isfile(recv_file_path):
+        print(file)
         data = wxm(file, recv_file_path)
+
         data.dropna(subset=['运单号'], inplace=True)
         for index, row in data.iterrows():
             row_data = row.tolist()
