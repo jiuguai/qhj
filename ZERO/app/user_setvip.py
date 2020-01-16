@@ -26,6 +26,9 @@ for file in os.listdir(file_dir):
         data = file_obj.parse('会员设置',index=False)
         l.append(data)
 
+if len(l) == 0:
+    print('文件不存在')
+    sys.exit()
 data = pd.concat(l)
 
 result = session.execute("select openid from user").fetchall()
