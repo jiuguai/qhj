@@ -355,9 +355,11 @@ class MallOrder():
         # 3 已完成 4 申请退款 5 退款成功  10 未支付
         order_status = order_status
         order_type = order_type
-        COROUTINE_MAX = coroutine_max
+        
         total_page, columns, data = self._get_order_init(order_type,order_status=order_status, **kargs)
 
+        COROUTINE_MAX = total_page if coroutine_max > total_page else coroutine_max
+        
         print("comfirm pagination total %s" %total_page)
 
 

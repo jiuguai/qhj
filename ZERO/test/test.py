@@ -43,7 +43,9 @@ def connect(sock, address):
         f.set_result(None)
 
     selector.register(sock.fileno(), EVENT_WRITE, on_connected)
+    log('1 connect')
     yield from f
+    log('2 connect')
     selector.unregister(sock.fileno())
 
 def read(sock):
@@ -58,7 +60,9 @@ def read(sock):
     此处的chunck接收的是f中return的f.result，同时会跑出一个stopIteration的异常，只不过被yield from处理了。
     这里也可直接写成chunck = yiled f
     """
+    log('1 read')
     chunck = yield from f
+    log('2 read')
     selector.unregister(sock.fileno())
     return chunck
 
@@ -78,9 +82,12 @@ class Crawler:
         self.response = b""
         log('初始化 Crawler')
     def fetch(self):
+        
         global stopped
+        log('1 fetch')
         sock = socket.socket()
         yield from connect(sock, ("xkcd.com", 80))
+        log('2 fetch')
         get = "GET {0} HTTP/1.0\r\nHost:xkcd.com\r\n\r\n".format(self.url)
         sock.send(get.encode('ascii'))
         self.response = yield from read_all(sock)
@@ -103,6 +110,7 @@ class Task:
             # next_future = self.coro.send(future.result)
             next_future = self.coro.send(None)  # 驱动future
         except StopIteration:
+            log('end')
             return
 
         next_future.add_done_callback(self.step)
