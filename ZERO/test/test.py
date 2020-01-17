@@ -26,7 +26,7 @@ class Future:
         yield的出现使得__iter__函数变成一个生成器，生成器本身就有next方法，所以不需要额外实现。
         yield from x语句首先调用iter(x)获取一个迭代器（生成器也是迭代器）
         """
-        yield self  # 外面使用yield from把f实例本身返回
+        yield  self # 外面使用yield from把f实例本身返回
         return self.result  # 在Task.step中send(result)的时候再次调用这个生成器，但是此时会抛出stopInteration异常，并且把self.result返回
 
 def connect(sock, address):
