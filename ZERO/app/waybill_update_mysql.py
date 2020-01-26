@@ -1,50 +1,48 @@
 import re
+import os
 import sys
-import datetime
 sys.path.append(r"D:\往期\QHJ\ZERO")
 sys.path.append(r"F:\QHJ\qhj\ZERO")
-from pyquery import PyQuery as pq
-import requests
-from urllib.parse import urlencode,parse_qs
+import warnings
+warnings.filterwarnings("ignore")
+import shutil
+
+import pymysql
 import numpy as np
 import pandas as pd
-import redis
 
-import json
 from tools import *
+def run():
+    qm = QHJMall(MALL_KEY)
+
+    conn = pymysql.connect(**MYSQL_MALL_DIC)
+    cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)
+    ORDER_BK_DIR = r"D:\奇货居\work\外发订单\备份\反馈"
+
+    recv_dir = os.path.join(NEW_ORDER_SAVE_DIR,"反馈数据")
+
+    cursor.execute("select 货品编号, 商品ID from goods where goods_type='free'")
+    goods_map_dic = cursor.fetchall()
+    goods_map_df = pd.DataFrame(goods_map_dic)
+    wxm = WaybillXlMiddleware(goods_map_df)
+
+    sql = "update order_details set 运单号=%s, 快递公司=%s where 订单号=%s and 商品ID=%s"
 
 
+    for file in os.listdir(recv_dir):
+        recv_file_path = os.path.join(recv_dir,file)
+        if not file.startswith('~$') and os.path.isfile(recv_file_path):
+            print(file)
+            data = wxm(file, recv_file_path)
 
-qm = QHJMall(MALL_KEY)
-conn = redis.Redis(**REDIS_MALL_ORDER_DIC)
+            data.dropna(subset=['运单号'], inplace=True)
+            for index, row in data.iterrows():
+                row_data = row.tolist()
+                print(row_data)
+                cursor.execute(sql,row_data)
+            conn.commit()
+            shutil.move(recv_file_path,os.path.join(ORDER_BK_DIR,file))
+    conn.close()
 
-# 需要整合
-# 
-# 
-# 
-wb_up_dir = os.path.join(NEW_ORDER_SAVE_DIR,"反馈数据")
-l = []
-for file_name in os.listdir(wb_up_dir):
-    file_path = os.path.join(wb_up_dir, file_name)
-
-    if not file_name.startswith("~$") and os.path.isfile(file_path):
-        
-
-        print(file_path)
-
-        data = read_xl(file_path,'订单号',converters={"订单号":str,'运单号':str})
-     
-        
-        l.append(data)
-
-data = pd.concat(l,sort=False)
-
-
-data.dropna(subset=['运单号'],inplace=True)
-data.reset_index(drop=True,inplace=True)
-
-print('可更新数据:%s条' %(len(data)))
-
-
-for i,row in data.iterrows():
-    qm.set_wb(row['订单号'],row['快递公司'],row['运单号'])
+if __name__ == '__main__':
+    run()

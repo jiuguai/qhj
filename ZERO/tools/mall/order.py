@@ -365,13 +365,14 @@ class MallOrder():
 
         loop = asyncio.get_event_loop()
         
+
         tasks = []
+        if total_page:
+            gen = iter(range(2,total_page+1))
+            for coroutine in range(COROUTINE_MAX):
+                tasks.append(self.async_get_order(data, order_type, gen, order_status=order_status, **kargs))
 
-        gen = iter(range(2,total_page+1))
-        for coroutine in range(COROUTINE_MAX):
-            tasks.append(self.async_get_order(data, order_type, gen, order_status=order_status, **kargs))
-
-        loop.run_until_complete(asyncio.wait( tasks))
+            loop.run_until_complete(asyncio.wait( tasks))
         
         df = pd.DataFrame(data, columns=columns)
         print('--> %s 条' %len(data))

@@ -1,61 +1,44 @@
-# -*- coding: utf-8 -*-
-"""
-Created on  2019-12-05 14:26:54
-
-@author: zero
-"""
-# In[导包]
-
-import os
 import sys
-sys.path.append(r"D:\往期\QHJ\ZERO")
-import warnings
-warnings.filterwarnings('ignore')
+# import app
+import importlib
 
-from concurrent.futures import ThreadPoolExecutor
+select_map = {
+	1:{
+		"func":"app.order_sys2local_process.run",
+		"describe":"[1] 提取订单信息"
+	},
+	2:{
+		"func":"app.order_insert_mysql.run",
+		"describe":"[2] 将订单信息备份到本地数据"
+	},
+	3:{
+		"func":"app.waybill_update_mall.run",
+		"describe":"[3] 更新运单信息到系统"
+	},
+	4:{
+		"func":"app.waybill_update_mysql.run",
+		"describe":"[4] 更新运单信息到本地"
+	},
+	5:{
+		"func":"app.order_trace.run",
+		"describe":"[5] 生成订单跟踪信息"
+	}
+}
+
+while True:
+	for i in range(1, len(select_map)+1):
+		print(select_map[i]['describe'])
+	print('[0] 退出')
+	a = input('请输入>>>>')
+	if a.isnumeric():
+		a = int(a)
+		if a == 0:
+			break
+		imp_name = select_map[a]['func']
+		module_name, func_name = imp_name.rsplit('.',1)
+
+		module = importlib.import_module(module_name)
+		func = getattr(module, func_name)
+		func()
 
 
-import numpy as np
-import pandas as pd
-import pymysql
-from sqlalchemy import create_engine
-import redis
-from tools import *
-
-
-
-
-#import hashlib
-
-#import pandas as pd
-
-#l = []
-#for i in range(1,26):
-#	md5 = hashlib.md5()
-#	md5.update(str(i).encode())
-#	l.append(md5.hexdigest())
-#s = pd.Series(l)
-
-# import logging
-
-
-# logger = logging.getLogger("九怪")
-# # 创建一个handler，用于写入日志文件
-# fh = logging.FileHandler('test.log',encoding='utf-8',mode='a') 
-
-# # 再创建一个handler，用于输出到控制台 
-# ch = logging.StreamHandler() 
-# formatter = logging.Formatter('%(asctime)s<%(module)s>-%(levelname)s-%(lineno)s: %(message)s')
-# fh.setLevel(logging.DEBUG)
-# ch.setLevel(logging.ERROR)
-
-# fh.setFormatter(formatter) 
-# ch.setFormatter(formatter) 
-# # logger.addHandler(fh) #logger对象可以添加多个fh和ch对象 
-# logger.addHandler(ch) 
-
-# logger.debug('logger debug 就是干') 
-# logger.info('logger info 就是干') 
-# logger.warning('logger warning 就是干') 
-# logger.error('logger error 就是干') 
-# logger.critical('logger critical 就是干')
