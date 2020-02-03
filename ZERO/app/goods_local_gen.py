@@ -6,7 +6,11 @@
 
 import os
 import sys
-sys.path.append(r"D:\往期\QHJ\ZERO")
+import platform
+if platform.node() == "zero_PC":
+    sys.path.append(r"F:\QHJ\qhj\ZERO")
+else:
+    sys.path.append(r"D:\往期\QHJ\ZERO")
 
 import warnings
 warnings.filterwarnings('ignore')

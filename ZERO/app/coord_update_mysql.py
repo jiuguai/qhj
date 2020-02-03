@@ -1,6 +1,10 @@
 import sys
-sys.path.append(r"D:\往期\QHJ\ZERO")
-sys.path.append(r"F:\QHJ\qhj\ZERO")
+import platform
+if platform.node() == "zero_PC":
+    sys.path.append(r"F:\QHJ\qhj\ZERO")
+else:
+    sys.path.append(r"D:\往期\QHJ\ZERO")
+
 
 from concurrent.futures import ThreadPoolExecutor
 
