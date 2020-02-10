@@ -1,8 +1,12 @@
 import os
 import sys
-sys.path.append(r"D:\往期\QHJ\ZERO")
-
-sys.path.append(r"F:\QHJ\qhj\ZERO")
+import platform
+if platform.node() == "zero_PC":
+    sys.path.append(r"F:\QHJ\qhj\ZERO")
+    file_dir = r"D:\奇货居\手动设置客户"
+else:
+    sys.path.append(r"D:\往期\QHJ\ZERO")
+    file_dir = r"C:\Users\qhj01\Desktop\客户"
 
 import pandas as pd
 import requests
@@ -16,8 +20,7 @@ def run():
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    l = []
-    file_dir = r"C:\Users\qhj01\Desktop\客户"
+    l = []    
     for file in os.listdir(file_dir):
         file_path = os.path.join(file_dir,file)
         if os.path.isfile(file_path):

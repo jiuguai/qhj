@@ -44,6 +44,10 @@ select_map = {
         "describe": "[%s] 生成订单跟踪信息"
     },
     4: {
+        "func": "app.user_setvip.run",
+        "describe": "[%s] 批量设置会员"
+    },
+    5: {
         "func": "app.coord_update_mysql.run",
         "describe": "[%s] 获取经纬度"
     },
