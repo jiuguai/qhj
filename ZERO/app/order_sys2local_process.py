@@ -31,6 +31,8 @@ from tools import *
 
 import datetime
 
+MAX_DELAY_DAY = 100
+
 def run():
     qm = QHJMall(MALL_KEY)
     lt_time = None
@@ -75,10 +77,13 @@ def run():
     conn = pymysql.connect(**MYSQL_MALL_DIC)
     cursor = conn.cursor()
     result = cursor.execute("select CONCAT(订单号,'-',商品ID) as k from order_details where 下单时间>='%s';" 
-                            %(datetime.date.today() - datetime.timedelta(40)).strftime("%Y-%m-%d"))
+                            %(datetime.date.today() - datetime.timedelta(MAX_DELAY_DAY)).strftime("%Y-%m-%d"))
 
+
+    
     r_conn.delete('order:old')
-    r_conn.sadd('order:old',*[ key[0] for key in cursor.fetchall()])
+    if result > 0:
+        r_conn.sadd('order:old',*[ key[0] for key in cursor.fetchall()])
 
 
     ## 获取免费的最新订单
@@ -105,10 +110,11 @@ def run():
         # 初步处理
 
         print('活动产品 初步处理')
-        data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
-        patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
-        data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
-
+        # data = data.replace("三金美肤面膜 缓解过敏 修复护理|三金美肤面膜 维稳修护 强化屏障", "三金护肤面膜 维稳修护 强化屏障", regex=True)
+        # patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
+        # data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
+        #  X 1 = ￥138
+        data['商品名'] = data['订单详情'].str.replace("\sX\s\d+\s=\s￥\d+(?=$)","",regex=True)
 
         data = pd.concat([data['用户信息'].str.extract("""
                 (?<=下单人：)(?P<收件人>[^\n]+)

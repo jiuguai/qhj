@@ -1,5 +1,9 @@
 import sys
-sys.path.append(r"D:\往期\QHJ\ZERO")
+import platform
+if platform.node() == "zero_PC":
+    sys.path.append(r"F:\QHJ\qhj\ZERO")
+else:
+    sys.path.append(r"D:\往期\QHJ\ZERO")
 import os
 import json
 
@@ -34,7 +38,8 @@ def run():
 
     free_order = order_df[order_df['goods_type']=="free"]
 
-    df = pd.merge(free_order,goods_df[["商品ID","SPUID",'系统分类','市场价','成本价','售价','发货商','发货商ID','规格','单位']],on='商品ID',how='left')
+    sg_free_order = free_order[free_order['goods_name'].str[:2] == "三金"]
+    df = pd.merge(sg_free_order,goods_df[["商品ID","SPUID",'系统分类','市场价','成本价','售价','发货商','发货商ID','规格','单位']],on='商品ID',how='left')
     df['lat'] = df['lat'].astype(np.float64)
     df['lng'] = df['lng'].astype(np.float64)
 
@@ -134,16 +139,16 @@ def run():
 
 
     main_temp = pd.concat([abut_temp,order_temp],axis=1,sort=False).sort_index().fillna(0)
-    data['xaxis'] = main_temp.index.to_list()
+    data['xaxis'] = main_temp.index.tolist()
 
     data['order_data'] = {"name":"下单数",
-                          "data":main_temp['下单数'].to_list(),
+                          "data":main_temp['下单数'].tolist(),
                           
                         }
 
     data['abut_data'] = []
     for col in {'已回复','待回复'} & set(main_temp):
-        data['abut_data'].append({'name':col,'data':main_temp[col].to_list()})
+        data['abut_data'].append({'name':col,'data':main_temp[col].tolist()})
 
     data['cur_date'] = main_temp['当日'].to_dict()
     data['ncur_date'] = main_temp['非当日'].to_dict()

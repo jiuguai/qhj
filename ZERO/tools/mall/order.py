@@ -375,7 +375,7 @@ class MallOrder():
             loop.run_until_complete(asyncio.wait( tasks))
         
         df = pd.DataFrame(data, columns=columns)
-        print('--> %s 条' %len(data))
+        print('--> async request %s 条' %len(data))
         df.drop_duplicates('订单号',inplace=True)
         return df
 
