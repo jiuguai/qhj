@@ -135,7 +135,7 @@ def run():
     writer = pd.ExcelWriter(save_path)
 
     fields = ['序号', '货品编号','商品ID', 'goods_id', 'attr_stock', '系统分类','类别', '规格模式', '规格', '售价','商品名简称','商品名','单位', '市场价', '交易编码', '发货商','发货商ID','供应商', '规格编码', '供应商ID',
-            '商品编码', 'SPUID', 'goods_type','img_dir' ]
+            '商品编码', 'SPUID', 'goods_type','img_dir', '发货货品名']
 
 
 

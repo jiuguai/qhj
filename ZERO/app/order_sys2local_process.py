@@ -57,13 +57,16 @@ def run():
     print('读取供应商信息')
     commodity_df = pd.read_excel(COMMODITY_PATH)
 
-
-
+    
     # In[3]:
 
     sku_goods = commodity_df \
-                    [['商品ID', '发货商','发货商ID',"货品编号",'goods_type','规格','单位', '市场价','售价','商品名简称']] \
+                    [['商品ID', '发货商','发货商ID',"货品编号",'goods_type','规格','单位', '市场价','售价','商品名简称', '发货货品名']] \
                     .rename(columns={"售价":"单价","商品名简称":"商品名"}).fillna({"goods_type":"original"})
+    
+    sku_goods['商品名'][(sku_goods['发货货品名'].notnull()) & (sku_goods['goods_type']!='free')] = \
+    sku_goods['发货货品名'][(sku_goods['发货货品名'].notnull()) & (sku_goods['goods_type']!='free')]
+
     free_goods = sku_goods[sku_goods['goods_type']=='free']
 
     commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
@@ -124,6 +127,9 @@ def run():
         # 采用商品名匹配
         data = pd.merge(data, free_goods, on='商品名', how='left')
 
+
+        data['商品名'][data['发货货品名'].notnull() ] = data['发货货品名'][data['发货货品名'].notnull() ]
+
         # 消除已经获取的数据
         print('去除已经获取的数据')
 
@@ -177,7 +183,8 @@ def run():
         规格[：:](?P<规格>.+?)(?=[，,]商品ID[：:])
         [，,]商品ID[：:](?P<商品ID>.+)）\sX(?P<数量>\s\d+)""",flags=re.X)],axis=1)
 
-        data = pd.merge(data,sku_goods[['商品ID','goods_type','单价','发货商']],on="商品ID")
+        del data['商品名']
+        data = pd.merge(data,sku_goods[['商品ID','goods_type','单价','商品名','发货商']],on="商品ID")
         data['数量'] = data['数量'].astype(int)
         data['支付金额'] = data['数量'] * data['单价']   
 
