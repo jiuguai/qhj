@@ -64,10 +64,10 @@ def run():
                     [['商品ID', '发货商','发货商ID',"货品编号",'goods_type','规格','单位', '市场价','售价','商品名简称', '发货货品名']] \
                     .rename(columns={"售价":"单价","商品名简称":"商品名"}).fillna({"goods_type":"original"})
     
-    sku_goods['商品名'][(sku_goods['发货货品名'].notnull()) & (sku_goods['goods_type']!='free')] = \
-    sku_goods['发货货品名'][(sku_goods['发货货品名'].notnull()) & (sku_goods['goods_type']!='free')]
+    sku_goods['商品名'][(sku_goods['发货货品名'].notnull())] = \
+    sku_goods['发货货品名'][(sku_goods['发货货品名'].notnull())]
 
-    free_goods = sku_goods[sku_goods['goods_type']=='free']
+
 
     commodity_df = commodity_df[['商品ID','供应商ID','供应商',"发货商","发货商ID"]]
     # 清理环境
@@ -79,6 +79,9 @@ def run():
     r_conn = redis.Redis(**REDIS_MALL_ORDER_DIC)
     conn = pymysql.connect(**MYSQL_MALL_DIC)
     cursor = conn.cursor()
+
+    
+
     result = cursor.execute("select CONCAT(订单号,'-',商品ID) as k from order_details where 下单时间>='%s';" 
                             %(datetime.date.today() - datetime.timedelta(MAX_DELAY_DAY)).strftime("%Y-%m-%d"))
 
@@ -87,6 +90,11 @@ def run():
     r_conn.delete('order:old')
     if result > 0:
         r_conn.sadd('order:old',*[ key[0] for key in cursor.fetchall()])
+
+
+    # 免费商品名映射SPUID
+    cursor.execute("select goods_sys_name, SPUID from fg_map_spuid")
+    free_goods_map = pd.DataFrame(list(cursor.fetchall()), columns=['商品名', '商品ID'])
 
 
     ## 获取免费的最新订单
@@ -117,7 +125,7 @@ def run():
         # patt = '三金补水面膜 镇静维稳 深层补水\\(补水\\)|三金美肤面膜 美白功效 健康肤色\\(美肤\\)|三金护肤面膜 维稳修护 强化屏障\\(护肤\\)|三金水光针\\(水光针\\)'
         # data['商品名'] = data['订单详情'].str.extract('(?P<商品名>%s)' % patt, expand=False).str.strip()
         #  X 1 = ￥138
-        data['商品名'] = data['订单详情'].str.replace("\sX\s\d+\s=\s￥\d+(?=$)","",regex=True)
+        data['商品名'] = data['订单详情'].str.replace("\sX\s\d+\s=\s[￥$]\d+(?=$)","",regex=True)
 
         data = pd.concat([data['用户信息'].str.extract("""
                 (?<=下单人：)(?P<收件人>[^\n]+)
@@ -125,10 +133,10 @@ def run():
                 \s+收货地址：(?P<收货地址>[^\n]+)""", flags=re.S | re.X),data],axis=1)
 
         # 采用商品名匹配
-        data = pd.merge(data, free_goods, on='商品名', how='left')
+        data = pd.merge(data, free_goods_map, on='商品名', how='left')
 
-
-        data['商品名'][data['发货货品名'].notnull() ] = data['发货货品名'][data['发货货品名'].notnull() ]
+        del data['商品名']
+        data = pd.merge(data,sku_goods[['商品ID','goods_type','规格', '货品编号','单位','单价','商品名','发货商']],on="商品ID")
 
         # 消除已经获取的数据
         print('去除已经获取的数据')
@@ -162,7 +170,7 @@ def run():
 
     if len(data):
 
-        print('去除重复爬取数据')
+        print('去除重复数据')
         data.drop_duplicates('订单号',inplace=True)
 
         data = pd.concat([data['用户信息'].str.extract("""
@@ -184,7 +192,7 @@ def run():
         [，,]商品ID[：:](?P<商品ID>.+)）\sX(?P<数量>\s\d+)""",flags=re.X)],axis=1)
 
         del data['商品名']
-        data = pd.merge(data,sku_goods[['商品ID','goods_type','单价','商品名','发货商']],on="商品ID")
+        data = pd.merge(data,sku_goods[['商品ID','goods_type', '货品编号', '单位', '单价','商品名','发货商']],on="商品ID")
         data['数量'] = data['数量'].astype(int)
         data['支付金额'] = data['数量'] * data['单价']   
 
@@ -232,8 +240,10 @@ def run():
     print('>>>>系统字段统一为本地字段')
     data.rename(columns=FIELDS_SLM_DIC,inplace=True)
 
-    del data['发货商ID']
-    del data['发货商']
+    for filed in ['发货商', '发货商ID']:
+        if filed in data:
+            del data[filed]
+
     # 获取供应商
     print('>>>>连接供应商信息')
     data = pd.merge(data,commodity_df,how='left',on='商品ID')
