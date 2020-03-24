@@ -77,9 +77,11 @@ while True:
             if len(l) > 1:
                 l.pop()
             continue
-
-        imp_name = handle_map[a]['func']
-
+        try:
+            imp_name = handle_map[a]['func']
+        except KeyError:
+            continue
+            
         if imp_name is None:
             l.append(handle_map[a])
             continue

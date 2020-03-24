@@ -205,7 +205,7 @@ class WaybillXlMiddleware():
             company = r.groupdict()['company']
             handle_xl = self.xl_dict.get(company,self.__default_xl)
             data = handle_xl(file_path, **kargs)
-            fields = ['运单号','快递公司','订单号','商品ID']
+            fields = ['运单号','快递公司','订单号']
             data = data[fields]
             return data
 
@@ -215,16 +215,16 @@ class WaybillXlMiddleware():
         if data is None:return
 
         # 注意特殊格式
-        data.dropna(subset=['货品编号'],inplace=True)
+        # data.dropna(subset=['货品编号'],inplace=True)
         re_col = {
             "快递方式":"快递公司"
             
         }
         data.rename(columns=re_col,inplace=True)
 
-        if "商品ID" not in data.columns:
-            map_data = self.map_data.get("三金",self.default_map_data)
-            data = pd.merge(data,map_data[['商品ID','货品编号']],how='left',on='货品编号')
+        # if "商品ID" not in data.columns:
+        #     map_data = self.map_data.get("三金",self.default_map_data)
+        #     data = pd.merge(data,map_data[['商品ID','货品编号']],how='left',on='货品编号')
 
         return data
 

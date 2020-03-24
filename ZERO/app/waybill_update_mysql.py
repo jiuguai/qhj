@@ -21,12 +21,12 @@ def run():
 
     recv_dir = os.path.join(NEW_ORDER_SAVE_DIR,"反馈数据")
 
-    cursor.execute("select 货品编号, 商品ID from goods where goods_type='free'")
+    cursor.execute("select 货品编号, 商品ID from goods where 货品编号 is not null")
     goods_map_dic = cursor.fetchall()
     goods_map_df = pd.DataFrame(goods_map_dic)
     wxm = WaybillXlMiddleware(goods_map_df)
 
-    sql = "update order_details set 运单号=%s, 快递公司=%s where 订单号=%s and 商品ID=%s"
+    sql = "update order_details set 运单号=%s, 快递公司=%s where 订单号=%s"
 
 
     for file in os.listdir(recv_dir):
