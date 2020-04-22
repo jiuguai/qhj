@@ -4,6 +4,7 @@ from collections import Counter
 
 import sys
 sys.path.append(r"D:\往期\QHJ\ZERO")
+sys.path.append(r"F:\QHJ\qhj\ZERO")
 
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
 from pyquery import PyQuery as pq
